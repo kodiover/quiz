@@ -14,15 +14,15 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('text', 400);
-            $table->unsignedBigInteger('quiz_id')->index();
-            $table->unsignedTinyInteger('time_limit');
-            $table->json('options');
+            $table->bigIncrements('id')->unsigned();
+            $table->string('text', 400);
+            $table->integer('quiz_id')->index();
+            $table->unsignedTinyInteger('time_limit')->nullable();
+            // $table->json('options');
             $table->string('correct_key', 5);
             $table->timestamps();
 
-            $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            // $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
         });
     }
 
@@ -36,3 +36,4 @@ class CreateQuestionsTable extends Migration
         Schema::dropIfExists('questions');
     }
 }
+
