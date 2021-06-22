@@ -15,10 +15,12 @@
     />
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
-        <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+        
         <script src="https://kit.fontawesome.com/68309a4001.js" crossorigin="anonymous"></script>
-
+        <script src="{{ asset('js/lava.js')}}"></script>
+        <script src="{{ asset('js/btnbounce.js') }}" type="text/javascript"></script>
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-purple-500 text-white">

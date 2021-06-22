@@ -15,8 +15,8 @@
                         style="width: 7em;"
                         autofocus
                         wire:model="pin" placeholder="Game PIN">
-                        <button type="submit" class="px-4 py-2 text-white bg-purple-700 hover:bg-purple-600 font-bold rounded shadow-lg" id="button" onclick="">
-                        Enter Quiz
+                    <button type="submit" class="homeBtn" id="button" onclick="btnBounce()">
+                    Enter Quiz
                     </button>
                         @error('pin')
                     <p class="font-bold px-4 mt-2  textbox text-sm text-red-700">{{ $message }}</p>
