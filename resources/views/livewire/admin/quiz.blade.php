@@ -10,11 +10,11 @@
             @endforeach
         </div>
     </div>
-    <div class="my-6">
+    <p class="py-6 mb-5">Waiting for players...</p>
+    <div class="my-6 text-center">
         <button wire:click="start"
-            class="px-4 py-2 font-bold bg-purple-700 text-white rounded text-xl">
+            class="px-4 py-2 font-bold bg-purple-700 text-black rounded text-xl">
             Ready!
         </button>
     </div>
-    <p class="py-6">Waiting for players...</p>
 </div>

@@ -1,4 +1,4 @@
-<div>
+<div class="add-question">
     <h4 class="text-2xl font-bold mb-4">Add Question</h4>
     <form wire:submit.prevent="create">
         <div class="mb-2">
@@ -55,11 +55,11 @@
                 @endforeach
             </select>
         </div>
-        {{-- @error('correctOptionIndex')
+        @error('correctOptionIndex')
             <p class="text-red-600 mt-2">{{ $message }}</p>
-        @enderror --}}
+        @enderror
         <div wire:key="submit-button">
-            <button class="px-3 py-2 rounded bg-blue-500 text-white font-bold text-sm">Create</button>
+            <button class="admin-text">Create</button>
         </div>
     </form>
 </div>

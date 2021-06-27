@@ -38,14 +38,14 @@
         <div class="ml-2 border-l pl-4 pt-4">
             @foreach ($quiz->questions as $index => $question)
             <div class="mb-4 bg-white rounded p-3 text-gray-900" x-data="{showAnswer: false}">
-                <p class="mb-3">
+                <p class="mb-3 admin-text float-left">
                     <strong class="float-left mr-2">{{ $index + 1 }}.</strong>
                     {!! $question->text !!}
                 </p>
-                <p class="mb-4 text-gray-800 font-bold italic">
+                <p class="mb-4 admin-text font-bold italic">
                     Time Limit: {{ $question->time_limit }}s
                 </p>
-                <div class="flex flex-wrap -m-1">
+                <div class="flex flex-wrap admin-text -m-1">
                     @foreach ($question->options as $key => $option)
                         <div class="w-1/2 p-1">
                             <div class="bg-gray-200 rounded border px-3 py-1">
@@ -56,11 +56,11 @@
                     @endforeach
                 </div>
                 <div class="flex mt-2 items-baseline">
-                    <button class="bg-purple-700 text-white font-bold text-sm px-2 py-1 rounded"
+                    <button class="bg-purple-700 text-black font-bold text-sm px-2 py-1 rounded"
                         @click="showAnswer = !showAnswer"
                         x-text="showAnswer ? 'Hide Answer' : 'Show Answer'"></button>
                     <template x-if.fade="showAnswer">
-                        <p class="ml-4 italic">
+                        <p class="ml-4 mt-2 italic admin-text text-left">
                             <strong class="mr-2">{{ $question->correct_key }})</strong>
                             {{ $question->options[$question->correct_key] }}
                         </p>
@@ -80,7 +80,7 @@
                 <line x1="2" y1="10" x2="18" y2="10"></line>
                 <line x1="10" y1="2" x2="10" y2="18"></line>
             </svg> -->
-            <button class="bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow p-3 svg" @click="creating = true">
+            <button class="fas fa-plus" @click="creating = true">
             </button>
         {{-- Add New Question Modal --}}
         <div wire:ignore.self
