@@ -7,9 +7,6 @@
         <title>@yield('title')@hasSection('title') | @endif{{ config('app.name') }} </title>
         <!-- Fonts & Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-<<<<<<< HEAD
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-=======
         <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -23,21 +20,14 @@
         
         <script src="https://kit.fontawesome.com/68309a4001.js" crossorigin="anonymous"></script>
         
->>>>>>> origin/master
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-purple-500 text-white">
         @yield('body')
         @include('partials.errors')
-<<<<<<< HEAD
-        <script src="{{ mix('js/app.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
-        @livewireScripts
-=======
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
         @livewireScripts
         <script type="text/javascript" src="{{ URL::asset('js/lava.js')}}"></script>
->>>>>>> origin/master
         @stack('scripts')
     </body>
 </html>

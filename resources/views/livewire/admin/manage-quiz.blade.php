@@ -38,16 +38,6 @@
         <div class="ml-2 border-l pl-4 pt-4">
             @foreach ($quiz->questions as $index => $question)
             <div class="mb-4 bg-white rounded p-3 text-gray-900" x-data="{showAnswer: false}">
-<<<<<<< HEAD
-                <p class="mb-3">
-                    <strong class="float-left mr-2">{{ $index + 1 }}.</strong>
-                    {!! $question->text !!}
-                </p>
-                <p class="mb-4 text-gray-800 font-bold italic">
-                    Time Limit: {{ $question->time_limit }}s
-                </p>
-                <div class="flex flex-wrap -m-1">
-=======
                 <p class="mb-3 admin-text float-left">
                     <strong class="float-left mr-2">{{ $index + 1 }}.</strong>
                     {!! $question->text !!}
@@ -56,7 +46,6 @@
                     Time Limit: {{ $question->time_limit }}s
                 </p>
                 <div class="flex flex-wrap admin-text -m-1">
->>>>>>> origin/master
                     @foreach ($question->options as $key => $option)
                         <div class="w-1/2 p-1">
                             <div class="bg-gray-200 rounded border px-3 py-1">
@@ -67,19 +56,11 @@
                     @endforeach
                 </div>
                 <div class="flex mt-2 items-baseline">
-<<<<<<< HEAD
-                    <button class="bg-purple-700 text-white font-bold text-sm px-2 py-1 rounded"
-                        @click="showAnswer = !showAnswer"
-                        x-text="showAnswer ? 'Hide Answer' : 'Show Answer'"></button>
-                    <template x-if.fade="showAnswer">
-                        <p class="ml-4 italic">
-=======
                     <button class="bg-purple-700 text-black font-bold text-sm px-2 py-1 rounded"
                         @click="showAnswer = !showAnswer"
                         x-text="showAnswer ? 'Hide Answer' : 'Show Answer'"></button>
                     <template x-if.fade="showAnswer">
                         <p class="ml-4 mt-2 italic admin-text text-left">
->>>>>>> origin/master
                             <strong class="mr-2">{{ $question->correct_key }})</strong>
                             {{ $question->options[$question->correct_key] }}
                         </p>
@@ -94,15 +75,6 @@
     <div class="fixed z-30 bottom-0 right-0 mb-12 mr-12"
         x-data="{ creating: false }"
         x-init="window.livewire.on('closeModal', () => creating = false)">
-<<<<<<< HEAD
-        <button class="bg-pink-600 hover:bg-pink-700 text-white rounded-full shadow p-3" @click="creating = true">
-            <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="2" y1="10" x2="18" y2="10"></line>
-                <line x1="10" y1="2" x2="10" y2="18"></line>
-            </svg>
-        </button>
-=======
             <!-- <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round"
                 stroke-linejoin="round">
                 <line x1="2" y1="10" x2="18" y2="10"></line>
@@ -110,7 +82,6 @@
             </svg> -->
             <button class="fas fa-plus" @click="creating = true">
             </button>
->>>>>>> origin/master
         {{-- Add New Question Modal --}}
         <div wire:ignore.self
             x-show.fade="creating"

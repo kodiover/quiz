@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<div>
-=======
 <div class="add-question">
->>>>>>> origin/master
     <h4 class="text-2xl font-bold mb-4">Add Question</h4>
     <form wire:submit.prevent="create">
         <div class="mb-2">
