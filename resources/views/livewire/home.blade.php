@@ -13,8 +13,8 @@
         <div class="container2">
             <h2 class="mb-6 text-4xl textbox font-bold text-center py-2">Enter Quiz Pin</h2>
 
-            <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
-                <!-- <div class="mx-auto text-xl text-black mb-6"> -->
+            <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="form-center">
+                <div class="mx-auto text-xl text-black mb-6">
                     <input type="tel"
                         class="w-full px-4 py-2 textbox bg-gray-200 hover:bg-white focus:bg-white tracking-widest rounded shadow-md box-mod"
                         style="width: 7em;"
@@ -26,12 +26,12 @@
                     {{-- @error('pin')
                         <p class="font-bold px-4 mt-2 textbox text-center text-sm text-red-700">{{ $message }}</p>
                     @enderror --}}
+                </div>
             </form>
 		</div>
-    </div>
         @else
         <h2 class="mb-6 text-4xl font-bold text-center py-2">Enter Nickname</h2>
-        <form wire:transition.fade wire:key="ready-for-quiz" wire:submit.prevent="ready" class="text-center form-center">
+        <form wire:transition.fade wire:key="ready-for-quiz" wire:submit.prevent="ready" class="form-center">
             <div class="mx-auto text-xl text-black mb-6">
                 <input type="text"
                     class="w-full px-4 py-2 bg-gray-200 hover:bg-white focus:bg-white tracking-widest rounded shadow-md"
@@ -52,4 +52,5 @@
         <p class="px-4 mt-1 text-sm text-red-700">{{ $message }}</p>
         @enderror -->
         @endif
+    </div>
 </div>
