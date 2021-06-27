@@ -7,11 +7,11 @@
         {{ $enteredSession->quiz->title }}
     </h3>
     @endif
-    <main class="container">
+    <div class="container">
         @if(! $enteredSession)
         <canvas id="lamp-anim" class="lamp" width="1500px" height="700px"></canvas>
         <div class="container2">
-        <h2 class="mb-6 text-4xl textbox font-bold text-center py-2">Enter Quiz Pin</h2>
+            <h2 class="mb-6 text-4xl textbox font-bold text-center py-2">Enter Quiz Pin</h2>
 
             <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
                 <!-- <div class="mx-auto text-xl text-black mb-6"> -->
@@ -28,7 +28,7 @@
                     @enderror --}}
             </form>
 		</div>
-    </main>
+    </div>
         @else
         <h2 class="mb-6 text-4xl font-bold text-center py-2">Enter Nickname</h2>
         <form wire:transition.fade wire:key="ready-for-quiz" wire:submit.prevent="ready" class="text-center form-center">
