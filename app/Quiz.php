@@ -34,6 +34,10 @@ class Quiz extends Model
 
     public function questions()
     {
+<<<<<<< HEAD
+=======
+        //                              key => value
+>>>>>>> origin/master
         return $this->hasMany(Question::class, 'quiz_id');
     }
 }

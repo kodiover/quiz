@@ -94,9 +94,15 @@ return [
 
         /*
          * Use an DNS resolver to make the requests to the statistics logger
+<<<<<<< HEAD
          * default is to resolve everything to 127.0.0.1.
          */
         'perform_dns_lookup' => false,
+=======
+         * default is to resolve everything to 95.179.239.164.
+         */
+        'perform_dns_lookup' => true,
+>>>>>>> origin/master
     ],
 
     /*

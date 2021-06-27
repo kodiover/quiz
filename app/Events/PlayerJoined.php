@@ -33,7 +33,11 @@ class PlayerJoined implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+<<<<<<< HEAD
         return new PrivateChannel('Admin.Quiz.' . $this->session->id);
+=======
+        return new PrivateChannel('Admin.Quiz.' , $this->session->id);
+>>>>>>> origin/master
     }
 
     public function broadcastWith()
