@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://quiz.onedot.uk/public'),
+    'url' => env('APP_URL', '127.0.0.1'),
 
     'asset_url' => env('ASSET_URL', null),
 
