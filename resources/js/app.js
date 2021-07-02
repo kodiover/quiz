@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 // require('./bootstrap');
->>>>>>> origin/master
 import Echo from 'laravel-echo';
 
 window.pusher = require('pusher-js');
