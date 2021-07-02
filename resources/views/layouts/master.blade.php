@@ -11,7 +11,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-purple-500 text-white">
-        @yield('body')
+        @livewire('home')
         @include('partials.errors')
         <script src="{{ mix('js/app.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>

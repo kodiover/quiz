@@ -7,17 +7,16 @@
     <div class="max-w-lg mx-auto">
         @if(! $enteredSession)
         <h2 class="mb-6 text-4xl font-bold text-center py-2">Enter Quiz Pin</h2>
-        <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center">
-            <div class="mx-auto text-xl text-black mb-6">
-                <input type="number"
-                    class="w-full px-4 py-2 bg-gray-200 hover:bg-white focus:bg-white tracking-widest rounded shadow-md"
-                    style="width: 7em;"
-                    min="100000" max="999999"
-                    autofocus
-                    wire:model="pin" placeholder="123456">
-                @error('pin')
-                <p class="font-bold px-4 mt-2 text-sm text-red-700">{{ $message }}</p>
-                @enderror
+        <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
+            <div class="text-xl text-black container2">
+                <input type="tel"
+                        class="w-full px-4 py-2 textbox bg-gray-200 hover:bg-white focus:bg-white tracking-widest rounded shadow-md box-mod"
+                        autofocus
+                        wire:model="pin" placeholder="Game PIN">
+                <div class="mx-auto text-xl mb-6">
+                <!-- <input type="tel" autofocus wire:model="pin" placeholder="Game PIN" class="text-center form-center" id="cb1" />
+                 <label for="cb1">Enter Quiz</label> -->
+                </div> 
             </div>
             <div class="mx-auto text-xl mb-6">
                 <button type="submit" class="px-4 py-2 text-white bg-purple-700 hover:bg-purple-600 font-bold rounded shadow-lg">
