@@ -13,7 +13,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="css/font-awesome.css">

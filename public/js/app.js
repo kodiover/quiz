@@ -105,7 +105,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 !(function webpackMissingModule() { var e = new Error("Cannot find module '/resources/js/app.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-__webpack_require__(/*! /var/www/vhosts/onedot.uk/quiz.onedot.uk/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/quiz/resources/sass/app.scss */"./resources/sass/app.scss");
 !(function webpackMissingModule() { var e = new Error("Cannot find module '/resources/css/app.css'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
