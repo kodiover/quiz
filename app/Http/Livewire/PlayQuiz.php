@@ -13,6 +13,7 @@ class PlayQuiz extends Component
 {
     use AuthorizesRequests;
 
+    public $count;
     public $session;
     public $question;
     public $response;

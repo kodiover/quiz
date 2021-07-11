@@ -14,10 +14,11 @@ class ManageQuiz extends Component
     public $options = [];
     public $correctOptionIndex = 0;
 
+    // Acts as constructor, to bind Quiz model
     public function mount($quiz)
     {
         $this->quiz = Quiz::whereId($quiz)
-            ->with(['sessions.players', 'questions'])
+            ->with(['sessions.players', 'questions']) // Must bind components that need to be accessed
             ->firstOrFail();
 
         $this->resetQuestion();
@@ -36,6 +37,7 @@ class ManageQuiz extends Component
         return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'][$index];
     }
 
+    // Function called to render layout
     public function render()
     {
         return view('livewire.admin.manage-quiz');
@@ -45,7 +47,7 @@ class ManageQuiz extends Component
     {
         if (count($this->options) < 6) {
             array_push($this->options, '');
-        }
+        }            
     }
 
     public function removeOption($index = null)

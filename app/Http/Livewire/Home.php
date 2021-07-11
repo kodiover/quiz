@@ -14,6 +14,10 @@ class Home extends Component
     public $nickname = '';
     public $enteredSession = null;
 
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
+
     public function render()
     {
         return view('livewire.home');
@@ -21,10 +25,12 @@ class Home extends Component
 
     public function enter()
     {
+        // Checks is pin is valid and generates error message
         $this->validate([
             'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
         ]);
 
+        
         $this->enteredSession = QuizSession::with('quiz')->where('pin', $this->pin)->first();
 
         PlayerSession::id($this->enteredSession->id);

@@ -3,7 +3,7 @@
 
     <div class="flex-1 h-full w-full">
         @foreach($players as $index => $player)
-        <div class="w-full flex items-center text-2xl font-bold py-2 px-4 rounded-lg {{ $index == 0 ? 'bg-purple-700' : 'bg-purple-600' }} mb-2">
+        <div class="w-full flex items-center text-2xl font-bold py-2 px-4 rounded-lg {{ $index == 0 ? 'bg-blue-700' : 'bg-blue-600' }} mb-2">
             <div class="w-20 pl-6 pr-6 text-right">{{ $index + 1 }}</div>
             <div class="px-4 flex-1 truncate">{{ $player->nickname }}</div>
             <div class="w-32 pl-4 pr-6 text-right">{{ $player->score }}</div>
@@ -11,6 +11,6 @@
         @endforeach
     </div>
     <div class="my-4">
-        <a href="{{ route('admin.home') }} " class="bg-purple-700 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
+        <button wire:click="discardSession({{$quiz->freshSession->id}})" class="bg-blue-700 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
     </div>
 </div>

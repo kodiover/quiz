@@ -248,9 +248,22 @@ window.lavaAnimation = (function() {
   return { run: n };
 })();
 
-if (document.getElementById("lamp-anim")) {
+if (document.getElementById('lamp-anim')) {
   lavaAnimation.run();
 }
 setTimeout(function() {
   $(".js-works-d-list").addClass("is-loaded");
 }, 150);
+
+function resize_canvas(){
+  canvas = document.getElementById("lamp-anim");
+  if (canvas.width  < window.innerWidth)
+  {
+      canvas.width  = window.innerWidth;
+  }
+
+  if (canvas.height < window.innerHeight)
+  {
+      canvas.height = window.innerHeight;
+  }
+}

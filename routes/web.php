@@ -8,13 +8,14 @@ Route::layout('layouts.master')->section('body')->group(function () {
     Route::livewire('/', 'home')->name('home');
     Route::livewire('/quiz/{quizSession}', 'quiz')->name('quiz.enter');
     Route::livewire('/quiz/{quizSession}/play', 'play-quiz')->name('quiz.play');
-});
+}); 
+
 
 Route::layout('layouts.master')
     ->section('body')
     ->prefix('admin')
     ->middleware('auth.basic')
-    ->group(function () {
+    ->group(function(){
         Route::livewire('/', 'admin.home')->name('admin.home');
         Route::livewire('/manage/quizzes/{quiz}', 'admin.manage-quiz')->name('admin.quizzes.manage');
         Route::livewire('/quiz/{quizSession}', 'admin.quiz')->name('admin.quiz.start');
