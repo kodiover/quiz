@@ -1,6 +1,4 @@
 <php
-header('Refresh: $timeLeft');
-?>
 @php($bgColors = ['bg-blue-400 text-white', 'bg-red-500 text-white', 'bg-green-400 text-white', 'bg-yellow-400 text-black'])
 @php($shapes = ['triangle', 'hexagon', 'circle', 'star'])
 <div class="container mx-auto flex flex-col min-h-screen relative">

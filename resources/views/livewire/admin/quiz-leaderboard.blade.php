@@ -11,6 +11,6 @@
         @endforeach
     </div>
     <div class="my-4">
-        <button wire:click="discardSession({{$quiz->freshSession->id}})" class="bg-blue-700 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
+        <a href="{{ route('admin.home') }}" class="bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
     </div>
 </div>

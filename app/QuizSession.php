@@ -67,7 +67,7 @@ class QuizSession extends Model
         $question = $this->quiz->questions->get($this->current_question_index, null);
 
         if (! $question) {
-            return $this->endSession();
+            return;
         }
 
         $this->next_question_at = now()->addSeconds($question->time_limit + $delayInSeconds);
@@ -85,8 +85,8 @@ class QuizSession extends Model
             'current_question_index' => null,
             'next_question_at' => null
         ]);
-
         event(new QuizSessionEnded($this));
+
     }
 
     public function isActive()

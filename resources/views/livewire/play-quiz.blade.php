@@ -5,6 +5,7 @@
             <p class="font-bold text-3xl italic">{{ $player->score }}</p>
         </div>
         <h2 class="text-5xl font-bold italic">The End!</h2>
+        <button wire:click="endQuiz" class="absolute bottom-0 bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
     @elseif($showAnswer)
         <div class="absolute top-0 right-0 mt-6 mr-6">
             <p class="font-bold text-3xl italic">{{ $player->score }}</p>

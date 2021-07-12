@@ -6,7 +6,6 @@ use App\Events\AnswerReceived;
 use App\PlayerSession;
 use App\QuizSession;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Redis;
 use Livewire\Component;
 
 class PlayQuiz extends Component
@@ -44,8 +43,9 @@ class PlayQuiz extends Component
 
     public function endQuiz()
     {
-        $this->ended = true;
+        // $this->ended = true;
         PlayerSession::clear();
+        return redirect()->route('livewire.home');
     }
 
     public function storeAnswer($answerKey)
@@ -70,6 +70,10 @@ class PlayQuiz extends Component
         $this->player = $quizSession->players()->whereNickname(
             PlayerSession::nickname()
         )->firstOrFail();
+
+        if($this->session->questions === null){
+            $this->ended = true;
+        }
 
         $this->question = $this->session->quiz->questions
             ->get($this->session->current_question_index, null);

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\QuizPlayer;
+use App\Quiz;
 use Livewire\Component;
 
 class QuizLeaderboard extends Component
@@ -19,8 +20,18 @@ class QuizLeaderboard extends Component
         ]);
     }
 
+    public function end()
+    {
+        $session = Quiz::where('id', $this->sessionId);
+        $session->sessions->endSession;
+        return redirect()->route('admin.home');
+            
+
+    }
+
     public function mount($quizSession)
     {
         $this->sessionId = $quizSession;
+
     }
 }
