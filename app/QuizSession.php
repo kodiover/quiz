@@ -64,9 +64,10 @@ class QuizSession extends Model
     public function nextQuestion($delayInSeconds = 0)
     {
         $this->current_question_index++;
+        
         $question = $this->quiz->questions->get($this->current_question_index, null);
-
-        if (! $question) {
+        
+        if (! $question){
             return;
         }
 

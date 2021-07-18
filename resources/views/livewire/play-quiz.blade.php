@@ -5,7 +5,7 @@
             <p class="font-bold text-3xl italic">{{ $player->score }}</p>
         </div>
         <h2 class="text-5xl font-bold italic">The End!</h2>
-        <button wire:click="endQuiz" class="absolute bottom-0 bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
+        <a href="/" class="absolute bottom-0 bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
     @elseif($showAnswer)
         <div class="absolute top-0 right-0 mt-6 mr-6">
             <p class="font-bold text-3xl italic">{{ $player->score }}</p>
@@ -14,7 +14,7 @@
             @if($response->response === $question->correct_key) &check; @else &times; @endif
         </div>
         <div class="text-xl font-bold">
-            @if(! $response )
+            @if(!$response->response)
                 <p class="text-xl font-bold">Time's Up!</p>
             @elseif($question->isCorrect($response->response))
                 <p class="text-xl font-bold">Woah! Correct Answer</p>

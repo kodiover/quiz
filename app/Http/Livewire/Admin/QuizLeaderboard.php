@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\QuizPlayer;
 use App\Quiz;
+use App\QuizPlayer;
+use App\PlayerSession;
 use Livewire\Component;
 
 class QuizLeaderboard extends Component
 {
     protected $sessionId;
+    protected $session;
 
     public function render()
     {
@@ -22,10 +24,8 @@ class QuizLeaderboard extends Component
 
     public function end()
     {
-        $session = Quiz::where('id', $this->sessionId);
-        $session->sessions->endSession;
-        return redirect()->route('admin.home');
-            
+       QuizSession::where('id', PlayerSession::id())->delete();
+       return redirect(route('admin.home'));
 
     }
 

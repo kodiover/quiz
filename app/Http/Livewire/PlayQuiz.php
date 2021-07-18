@@ -42,12 +42,6 @@ class PlayQuiz extends Component
         $this->redirect(route('quiz.play', $this->session));
     }
 
-    public function endQuiz()
-    {
-        if ($this->ended){
-            PlayerSession::clear();
-        }
-    }
 
     public function storeAnswer($answerKey)
     {
@@ -62,6 +56,19 @@ class PlayQuiz extends Component
         $this->showAnswer = true;
     }
 
+    public function end()
+    {
+        foreach($this->question as $key => $option){
+            if (!$this->player->respond($this->question->last(), $key)){
+                $this->ended = true;
+            }else $this->ended = true;
+        }
+        if ($this->ended){
+            PlayerSession::clear();
+            return $this->session->endSession;
+        }
+    }
+
     public function mount(QuizSession $quizSession)
     {
         $this->authorize('play', $quizSession);
@@ -71,10 +78,6 @@ class PlayQuiz extends Component
         $this->player = $quizSession->players()->whereNickname(
             PlayerSession::nickname()
         )->firstOrFail();
-
-        if($this->session->quiz->questions === null){
-            $this->ended = true;
-        }
 
         $this->question = $this->session->quiz->questions
             ->get($this->session->current_question_index, null);

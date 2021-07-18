@@ -37,16 +37,17 @@
                 </button>
             </p>
         </div>
-    
-                
-       
-        
+
         @empty
         <p class="text-black text-center">No quizzes created.</p>
         
         @endforelse
         <div class="bottom-0 ml-12 mt-12 z-10 text-right">
-                    <button class="fas fa-plus fa-3x text-black hover:text-blue-700" @click="creating = true">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow p-3" @click="creating = true">
+                        <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="2" y1="10" x2="18" y2="10"></line>
+                            <line x1="10" y1="2" x2="10" y2="18"></line>
+                        </svg>
                     </button>
                 </div>
         <div wire:key="create-quiz-modal"
@@ -59,7 +60,7 @@
                 <div class="mb-2 bg-gray-700 rounded ">
                     <input id="title" wire:model="quizTitle" class="w-full px-3 py-2 border rounded bg-black hover:bg-black-700 text-white" placeholder="Title" autocomplete="off"/>
                     @error('quizTitle')
-                        <p class="admin-text bg-black">{{ $message }}</p>
+                        <p class="text-red-600 bg-black">{{ $message }}</p>
                     @enderror   
                 </div>
                 <div>

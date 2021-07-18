@@ -9,7 +9,9 @@
             'duration' => $timeLeft,
             'timeup' => 'timeUp()'
         ])
-        <p class="text-3xl font-bold italic" x-text="timeLeft"></p>
+        <div class="absolute top-0 right-0 mt-6 mr-6">
+            <p class="text-3xl font-bold italic" x-text="timeLeft"></p>
+        </div>
         @endcomponent
     </div>
     <p class="p-6 rounded bg-blue-600 text-2xl font-mono font-bold tracking-wide mb-8">{{ $question->text }}</p>
