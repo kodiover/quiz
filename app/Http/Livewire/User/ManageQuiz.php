@@ -40,7 +40,7 @@ class ManageQuiz extends Component
     // Function called to render layout
     public function render()
     {
-        return view('livewire.admin.manage-quiz');
+        return view('livewire.user.manage-quiz');
     }
 
     public function addOption()

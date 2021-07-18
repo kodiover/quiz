@@ -32,7 +32,7 @@ class Quiz extends Component
 
         event(new QuizSessionStarted($this->session));
 
-        return redirect()->route('admin.quiz.play', $this->session);
+        return redirect()->route('user.quiz.play', $this->session);
     }
 
     public function mount(QuizSession $quizSession)

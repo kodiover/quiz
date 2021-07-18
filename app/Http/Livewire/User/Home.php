@@ -54,7 +54,7 @@ class Home extends Component
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect()->route('admin.quiz.start', $session);
+        return redirect()->route('user.quiz.start', $session);
     }
 
     public function abandonAndStartNewSession($quizId, $sessionId)
@@ -65,14 +65,14 @@ class Home extends Component
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect()->route('admin.quiz.start', $session);
+        return redirect()->route('user.quiz.start', $session);
     }
 
     public function discardSession($sessionId)
     {
         QuizSession::where('id', $sessionId)->delete();
 
-        return redirect()->route('admin.home');
+        return redirect()->route('user.home');
     }
 
     public function mount()

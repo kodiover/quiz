@@ -33,11 +33,11 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['middleware' => ['auth', 'verified']], function(){
-        Route::livewire('/home', 'user.home')->name('home');
+        Route::livewire('/home', 'user.home')->name('user.home');
         Route::livewire('/manage/quizzes/{quiz}', 'user.manage-quiz')->name('user.quizzes.manage');
         Route::livewire('/quiz/{quizSession}', 'user.quiz')->name('user.quiz.start');
         Route::livewire('/quiz/{quizSession}/play', 'user.play-quiz')->name('user.quiz.play');
-        Route::livewire('/quiz/{quizSession}/leaderboard', 'user.quiz-leaderboard')->name('quiz.leaderboard');
+        Route::livewire('/quiz/{quizSession}/leaderboard', 'user.quiz-leaderboard')->name('user.quiz.leaderboard');
         Route::livewire('/logout', 'auth.logout')->name('logout');
 
         Route::post('/quiz/{quizSession}/next', function (QuizSession $quizSession) {

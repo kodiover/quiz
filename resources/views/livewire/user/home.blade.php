@@ -7,7 +7,7 @@
         @forelse($quizzes as $quiz)
             <div class="w-full bg-black text-black-900 py-3 px-6 rounded border shadow relative mb-4">
                 <h3 class="text-lg font-bold pr-12">
-                    <a href="{{ route('admin.quizzes.manage', $quiz) }}">{{ $quiz->title }}</a>
+                    <a href="{{ route('user.quizzes.manage', $quiz) }}">{{ $quiz->title }}</a>
                 </h3>
                 <p class="mt-2">
                     @if(!$quiz->freshSession)
@@ -17,7 +17,7 @@
                         </button>
                     
                     @else
-                        <a href="{{ route('admin.quiz.start', $quiz->freshSession) }}"
+                        <a href="{{ route('user.quiz.start', $quiz->freshSession) }}"
                             class="ml-2 px-2 py-1 text-sm rounded bg-orange-500 hover:bg-orange-700 text-blackfont-bold">
                             Resume
                         </a>
