@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\User;
 
 use App\Quiz;
 use App\QuizPlayer;
@@ -25,7 +25,7 @@ class QuizLeaderboard extends Component
     public function end()
     {
        QuizSession::where('id', PlayerSession::id())->delete();
-       return redirect(route('admin.home'));
+       return redirect(route('user.home'));
 
     }
 

@@ -14,10 +14,6 @@ class Home extends Component
     public $nickname = '';
     public $enteredSession = null;
 
-    // public function __construct(){
-    //     $this->middleware('auth');
-    // }
-
     public function render()
     {
         return view('livewire.home');

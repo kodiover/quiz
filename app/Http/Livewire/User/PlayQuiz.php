@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\User;
 
 use App\Events\QuestionCompleted;
 use App\QuizSession;
@@ -24,7 +24,7 @@ class PlayQuiz extends Component
 
     public function render()
     {
-        return view('livewire.admin.play-quiz');
+        return view('livewire.user.play-quiz');
     }
 
     public function addAnswer($response)

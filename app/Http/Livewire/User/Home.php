@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\User;
 
 use App\Quiz;
 use App\QuizSession;
@@ -15,7 +15,7 @@ class Home extends Component
     public function render()
     {
 
-        return view('livewire.admin.home');
+        return view('livewire.user.home');
     }
 
     public function createQuiz()

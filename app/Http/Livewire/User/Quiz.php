@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\User;
 
 use App\Events\QuizSessionStarted;
 use App\QuizSession;
@@ -18,7 +18,7 @@ class Quiz extends Component
 
     public function render()
     {
-        return view('livewire.admin.quiz');
+        return view('livewire.user.quiz');
     }
 
     public function loadPlayers()
@@ -40,7 +40,7 @@ class Quiz extends Component
         $this->session = $quizSession;
 
         if ($this->session->isActive()) {
-            return redirect()->route('admin.quiz.play', $this->session);
+            return redirect()->route('user.quiz.play', $this->session);
         }
     }
 }

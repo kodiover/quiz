@@ -1,4 +1,3 @@
-@extends('layouts.master')
 <div class="h-screen flex flex-col justify-center items-center home-page">
     @if($enteredSession)
     <h3 wire:transition.fade class="text-2xl font-bold py-4 mb-6 text-center">
