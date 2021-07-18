@@ -34,6 +34,7 @@ class PlayQuiz extends Component
     public function render()
     {
         return view('livewire.play-quiz');
+
     }
 
     public function reload($data)
@@ -43,9 +44,9 @@ class PlayQuiz extends Component
 
     public function endQuiz()
     {
-        // $this->ended = true;
-        PlayerSession::clear();
-        return redirect()->route('livewire.home');
+        if ($this->ended){
+            PlayerSession::clear();
+        }
     }
 
     public function storeAnswer($answerKey)
@@ -71,7 +72,7 @@ class PlayQuiz extends Component
             PlayerSession::nickname()
         )->firstOrFail();
 
-        if($this->session->questions === null){
+        if($this->session->quiz->questions === null){
             $this->ended = true;
         }
 
@@ -81,7 +82,6 @@ class PlayQuiz extends Component
         $this->response = $this->player->responses()
             ->where('question_id', $this->question->id)
             ->first();
-
         if ($this->response && $this->response->score !== null) {
             $this->showAnswer();
         }
