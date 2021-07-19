@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@push('scripts')
+<script type="text/javascript" src="{{ asset('js/auth-page.js') }}"></script>
+@endpush
 <div>
     <div class="card-header">{{ __('Login') }}</div>
     <form wire:submit.prevent="submit" class="form">
@@ -18,9 +21,9 @@
             <input class="form-check-input" type="checkbox" wire:model.lazy="remember"
                 id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-            <label class="form-check-label" for="remember">
+            <checkbox class="form-check-label" for="remember">
                 {{ __('Remember Me') }}
-            </label>
+            </checkbox>
           </div>
         </div>
       </div>

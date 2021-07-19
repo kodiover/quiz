@@ -12,7 +12,7 @@
             @endforeach
         </div>
         <div class="my-4">
-            <a href="{{ route('home') }}" class="bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
+            <a href="{{ route('index') }}" class="bg-blue-700 hover:bg-blue-600 text-white text-2xl font-bold px-4 py-2 rounded">Home</a>
         </div>
     </div>
 </section>

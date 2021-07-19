@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire;
 
 use App\Quiz;
 use App\QuizSession;
@@ -72,7 +72,7 @@ class Home extends Component
     {
         QuizSession::where('id', $sessionId)->delete();
 
-        return redirect()->route('user.home');
+        return redirect()->route('home');
     }
 
     public function mount()

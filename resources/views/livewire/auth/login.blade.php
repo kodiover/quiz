@@ -16,7 +16,7 @@
             <input class="form-check-input" type="checkbox" wire:model.lazy="remember"
                 id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-            <label class="form-check-label" for="remember">
+            <label for="remember">
                 {{ __('Remember Me') }}
             </label>
           </div>

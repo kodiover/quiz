@@ -25,7 +25,7 @@ class Login extends Component
         $auth = auth()->attempt(['email' => $this->email, 'password' => $this->password], $this->remember);
 
         return $auth
-            ? redirect(route('user.home'))
+            ? redirect(route('home'))
             : redirect()->back()->with('error', 'The credentials do not exist in our database');
     }
 

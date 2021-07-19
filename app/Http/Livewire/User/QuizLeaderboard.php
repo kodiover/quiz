@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Quiz;
+use App\QuizSession;
 use App\QuizPlayer;
 use App\PlayerSession;
 use Livewire\Component;
@@ -25,7 +25,7 @@ class QuizLeaderboard extends Component
     public function end()
     {
        QuizSession::where('id', PlayerSession::id())->delete();
-       return redirect(route('user.home'));
+       return redirect(route('home'));
 
     }
 

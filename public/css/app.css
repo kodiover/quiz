@@ -31871,7 +31871,7 @@ input[type=checkbox]:checked + label:after {
   transform: scale(4.2);
 }
 
-label {
+/* label {
   outline: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -31901,14 +31901,14 @@ label::after {
   transform: scale(0);
   transition: transform 0.3s ease-in;
   mix-blend-mode: difference;
-  /*Gradient start values are somewhat arbitrary. But this seemed a good fit to avoid overly-blurry circle edge. */
+  Gradient start values are somewhat arbitrary. But this seemed a good fit to avoid overly-blurry circle edge.
   background: radial-gradient(circle at center, #fff 24%, #000 25%, #000 100%);
 }
 
 label:active {
   top: 3px;
   box-shadow: none;
-}
+} */
 
 @media (min-width: 640px){
   .sm\:sr-only{

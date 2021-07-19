@@ -10,7 +10,7 @@ class Logout extends Component
     {
         auth()->logout();
 
-        return redirect(route('home'));
+        return redirect(route('index'));
     }
 
     public function render()

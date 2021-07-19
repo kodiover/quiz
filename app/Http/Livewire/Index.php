@@ -8,7 +8,7 @@ use App\QuizSession;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class Home extends Component
+class Index extends Component
 {
     public $pin = '';
     public $nickname = '';
@@ -16,7 +16,7 @@ class Home extends Component
 
     public function render()
     {
-        return view('livewire.home');
+        return view('livewire.index');
     }
 
     public function enter()

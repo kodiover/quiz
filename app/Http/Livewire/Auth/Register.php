@@ -50,7 +50,7 @@ class Register extends Component
 
         auth()->attempt(['email' => $this->email, 'password' => $this->password]);
 
-        return redirect(route('user.home'));
+        return redirect(route('home'));
     }
 
     /**
