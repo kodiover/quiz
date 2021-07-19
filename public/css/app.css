@@ -72,7 +72,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  /* background-color: #f8fafc; */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2161,10 +2161,10 @@ pre code {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #495057;
-  background-color: #fff;
+  color: #495057 !important;
+  background-color: #17191a;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #393e41;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2186,11 +2186,10 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #a1cbef;
+  color: #50575e;
+  /* border-color: #7295b3; */
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 140, 255, 0.25);
 }
 
 .form-control::-moz-placeholder {
@@ -2242,6 +2241,7 @@ select.form-control:focus::-ms-value {
 .col-form-label {
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
+  color: white;
   margin-bottom: 0;
   font-size: inherit;
   line-height: 1.6;
@@ -2339,6 +2339,11 @@ textarea.form-control {
   margin-left: -1.25rem;
 }
 
+.form-check-input:checked {
+  outline: 0.09rem solid white;
+
+}
+
 .form-check-input[disabled] ~ .form-check-label,
 .form-check-input:disabled ~ .form-check-label {
   color: #6c757d;
@@ -2346,6 +2351,7 @@ textarea.form-control {
 
 .form-check-label {
   margin-bottom: 0;
+  color: white;
 }
 
 .form-check-inline {
@@ -4975,7 +4981,7 @@ input[type=button].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #000;
+  background-color: #17191a;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -5034,7 +5040,8 @@ input[type=button].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color: #c5c1bb;
+  border-bottom: 1px solid darkgray;
 }
 
 .card-header:first-child {

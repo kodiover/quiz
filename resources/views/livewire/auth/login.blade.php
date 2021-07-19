@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror"
-                                        wire:model.lazy="password" required>
+                                        wire:model.lazy="password" required value="{{ old('password') }}">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">

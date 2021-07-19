@@ -18,12 +18,10 @@
     @livewireStyles
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://services.cognitoforms.com/s/VSqLsE7970G2a-Ir3-x6cg"></script>
     @livewireScripts
 
 </head>
