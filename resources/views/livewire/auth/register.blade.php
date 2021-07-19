@@ -1,5 +1,5 @@
 <section>
-    <div class="container">
+    <div class="auth">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -93,18 +93,6 @@
                                 </div>
                             </div>
                         </form>
-                        <ul class="bg-bubbles">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        </ul>
                     </div>
                 </div>
             </div>
