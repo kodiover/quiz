@@ -2188,7 +2188,7 @@ pre code {
 .form-control:focus {
   color: #50575e;
   /* border-color: #7295b3; */
-  outline: 0;
+  /* outline: 1px solid rgb(94, 94, 224); */
   box-shadow: 0 0 0 0.2rem rgba(0, 140, 255, 0.25);
 }
 
@@ -2340,8 +2340,9 @@ textarea.form-control {
 }
 
 .form-check-input:checked {
-  outline: 0.09rem solid white;
-
+  outline: 0.09rem solid;
+  box-shadow: 0 0 0 0.2rem rgba(0, 140, 255, 0.25);
+  border-radius: 0.25rem;
 }
 
 .form-check-input[disabled] ~ .form-check-label,
@@ -4983,7 +4984,7 @@ input[type=button].btn-block {
   word-wrap: break-word;
   background-color: #17191a;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(238, 235, 235, 0.13);
   border-radius: 0.25rem;
 }
 
@@ -5041,7 +5042,7 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   color: #c5c1bb;
-  border-bottom: 1px solid darkgray;
+  border-bottom: 1px solid rgba(238, 235, 235, 0.13);
 }
 
 .card-header:first-child {
