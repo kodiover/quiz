@@ -3,11 +3,6 @@
 use App\QuizSession;
 use Illuminate\Support\Facades\Route;
 
-// Route::layout('layouts.master')->section('body')->group(function () {
-//     Route::livewire('/', 'home')->name('home');
-    
-// }); 
-
 Route::livewire('/', 'index')->name('index');
 Route::livewire('/quiz/{quizSession}', 'quiz')->name('quiz.enter');
 Route::livewire('/quiz/{quizSession}/play', 'play-quiz')->name('quiz.play');
