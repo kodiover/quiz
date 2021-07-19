@@ -11,70 +11,71 @@
 
     <!-- Fonts & Stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
 
     <!-- Styles -->
     @livewireStyles
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/auth.css') }}">
-
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://services.cognitoforms.com/s/VSqLsE7970G2a-Ir3-x6cg"></script>
     @livewireScripts
 
 </head>
-<body class="font-sans antialiased text-white">
-<div id="app">
-    
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="auth">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<body class="font-sans antialiased">
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+            <div class="auth">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-                </ul>
+                    </ul>
 
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
-                            data-turbolinks="false">
-                            {{ auth()->user()->name }} <span class="caret"></span>
-                        </a>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                                data-turbolinks="false">
+                                {{ auth()->user()->name }} <span class="caret"></span>
+                            </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <livewire:auth.logout />
-                        </div>
-                    </li>
-                    @endguest
-                </ul>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <livewire:auth.logout />
+                            </div>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-
+        </nav>
+    </div>
     @yield('content')
     @include('partials.errors')
         

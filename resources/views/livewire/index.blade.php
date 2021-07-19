@@ -8,23 +8,25 @@
         <div class="max-w-lg mx-auto container">
             @if(! $enteredSession)
             <h2 class="mb-6 text-4xl font-bold text-center text-black py-2">Enter Quiz Pin</h2>
+
             <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
                 <div class="text-xl text-black container2">
                     <input type="tel"
                             class="w-full px-4 py-2 textbox tracking-widest rounded shadow-md box-mod"
-                            autofocus
-                            wire:model="pin" placeholder="Game PIN">
+                            placeholder="Game PIN"                            
+                            autocomplete="off"
+                            wire:model="pin">   
                 </div>
             
                 <div class="text-xl mb-4">
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-600 font-bold rounded shadow-lg button">
+                        <button type="submit" class="btn-submit">
                             Enter Quiz
                         </button>
                 </div>
-            </form>
-            @error('pin')
+                @error('pin')
                 <p class="font-bold px-4 mt-2 textbox text-sm error">{{ $message }}</p>
-            @enderror
+                @enderror
+            </form>
             @else
             <div class="max-w-lg mx-auto container">
                 <h2 class="mb-6 text-4xl font-bold text-center text-black py-2">Enter Nickname</h2>
@@ -33,11 +35,8 @@
                         <input type="text"
                             class="w-full px-4 py-2 textbox tracking-widest rounded shadow-md box-mod"
                             placeholder="Nickname"
-                            autofocus
-                            wire:model="nickname">
-                        @error('nickname')
-                        <p class="font-bold px-4 mt-2 text-sm error">{{ $message }}</p>
-                        @enderror
+                            required autocomplete="off"
+                            wire:model="nickname">                                                   
                     </div>
                     <div class="text-xl mb-4">
                         <button type="submit"
@@ -45,6 +44,9 @@
                             Ready!
                         </button>
                     </div>
+                    @error('nickname')
+                    <p class="px-4 mt-1 text-sm error">{{ $message }}</p>
+                    @enderror
                 </form>
             </div>
             @error('nickname')
