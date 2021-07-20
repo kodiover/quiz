@@ -4,11 +4,12 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04e9b10a4bd317e8f7c1dc080efb048f",
+    "content-hash": "652a32eba8e5694976bdc9f1325ab9d6",
     "packages": [
+        
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
@@ -26,13 +27,13 @@
                 "ext-json": "*",
                 "facade/ignition-contracts": "^1.0",
                 "guzzlehttp/psr7": "^1.5",
-                "illuminate/broadcasting": "5.7.* || 5.8.* || ^7.0",
-                "illuminate/console": "5.7.* || 5.8.* || ^7.0",
-                "illuminate/http": "5.7.* || 5.8.* || ^7.0",
-                "illuminate/routing": "5.7.* || 5.8.* || ^7.0",
-                "illuminate/support": "5.7.* || 5.8.* || ^7.0",
+                "illuminate/broadcasting": "5.7.* || 5.8.* || ^8.0",
+                "illuminate/console": "5.7.* || 5.8.* || ^8.0",
+                "illuminate/http": "5.7.* || 5.8.* || ^8.0",
+                "illuminate/routing": "5.7.* || 5.8.* || ^8.0",
+                "illuminate/support": "5.7.* || 5.8.* || ^8.0",
                 "php": "^7.1",
-                "pusher/pusher-php-server": "~3.0 || ~4.0",
+                "pusher/pusher-php-server": "~3.0 || ~5.0",
                 "react/dns": "^1.1",
                 "symfony/http-kernel": "~4.0",
                 "symfony/psr-http-message-bridge": "^1.1"
@@ -84,6 +85,7 @@
             ],
             "time": "2019-09-04T06:48:06+00:00"
         },
+        
         {
             "name": "cboden/ratchet",
             "version": "v0.4.2",
@@ -198,6 +200,7 @@
             "abandoned": "react/http",
             "time": "2020-02-26T12:05:32+00:00"
         },
+        
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -776,7 +779,7 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.0.0",
+            "version": "v8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
@@ -1144,7 +1147,7 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.5.5",
+            "version": "v2.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
@@ -1157,9 +1160,9 @@
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-                "illuminate/validation": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0|^8.0",
+                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^8.0",
+                "illuminate/validation": "~5.6.0|~5.7.0|~5.8.0|^6.0|^8.0",
                 "php": "^7.1.3",
                 "symfony/http-kernel": "^4.0|^5.0"
             },
@@ -1198,53 +1201,6 @@
             ],
             "description": "A front-end framework for Laravel.",
             "time": "2020-02-27T21:24:55+00:00"
-        },
-        {
-            "name": "mailchimp/mailchimp",
-            "version": "2.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php.git",
-                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php/get/7ac99b5ac746d5875c5c350ad7e3b83674c83ec1.zip",
-                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "apigen/apigen": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Mailchimp": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "MailChimp Devs",
-                    "email": "api@mailchimp.com",
-                    "homepage": "http://mailchimp.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "API client library for the MailChimp bulk email as a service platform",
-            "homepage": "https://bitbucket.org/mailchimp/mailchimp-api-php",
-            "keywords": [
-                "api",
-                "email"
-            ],
-            "abandoned": "mailchimp/marketing",
-            "time": "2014-10-30T20:38:12+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1509,6 +1465,62 @@
                 "serialize"
             ],
             "time": "2019-11-29T22:36:02+00:00"
+        },
+        {
+            "name": "owenvoke/blade-fontawesome",
+            "version": "v1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/owenvoke/blade-fontawesome.git",
+                "reference": "5691814781a2fb7bc573a5ab4d43639ee122828d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/owenvoke/blade-fontawesome/zipball/5691814781a2fb7bc573a5ab4d43639ee122828d",
+                "reference": "5691814781a2fb7bc573a5ab4d43639ee122828d",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "pestphp/pest": "^1.0",
+                "phpstan/phpstan": "^0.12.82",
+                "spatie/pest-plugin-snapshots": "^1.0.1",
+                "symfony/var-dumper": "^5.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OwenVoke\\BladeFontAwesome\\BladeFontAwesomeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OwenVoke\\BladeFontAwesome\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A package to easily make use of Font Awesome in your Laravel Blade views",
+            "funding": [
+                {
+                    "url": "https://ecologi.com/owenvoke?gift-trees",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/owenvoke",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-05-10T14:00:19+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1962,7 +1974,7 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v4.1.3",
+            "version": "v5.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
@@ -1977,7 +1989,7 @@
             "require": {
                 "ext-curl": "*",
                 "paragonie/sodium_compat": "^1.6",
-                "php": ">=5.4 <7.4",
+                "php": "^7.1",
                 "psr/log": "^1.0"
             },
             "require-dev": {
@@ -4341,7 +4353,7 @@
             },
             "require": {
                 "facade/ignition-contracts": "~1.0",
-                "illuminate/pipeline": "^5.5|^6.0|^7.0",
+                "illuminate/pipeline": "^5.5|^6.0|^8.0",
                 "php": "^7.1",
                 "symfony/http-foundation": "^3.3|^4.1|^5.0",
                 "symfony/var-dumper": "^3.4|^4.0|^5.0"
@@ -4399,7 +4411,7 @@
                 "facade/flare-client-php": "^1.3",
                 "facade/ignition-contracts": "^1.0",
                 "filp/whoops": "^2.4",
-                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^7.0",
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^8.0",
                 "monolog/monolog": "^1.12 || ^2.0",
                 "php": "^7.1",
                 "scrivo/highlight.php": "^9.15",
@@ -4559,6 +4571,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -4624,9 +4637,9 @@
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "~5.8|^7.0",
-                "illuminate/filesystem": "~5.8|^7.0",
-                "illuminate/support": "~5.8|^7.0",
+                "illuminate/console": "~5.8|^8.0",
+                "illuminate/filesystem": "~5.8|^8.0",
+                "illuminate/support": "~5.8|^8.0",
                 "php": "^7.1.3|^8.0"
             },
             "type": "library",
@@ -5402,6 +5415,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -6216,12 +6230,12 @@
             "version": "1.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
                 "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
                 "shasum": ""
             },
@@ -6266,7 +6280,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "^7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

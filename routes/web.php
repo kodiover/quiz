@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\NewUserNotification;
 use App\QuizSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 Route::livewire('/', 'index')->name('index');
 Route::livewire('/quiz/{quizSession}', 'quiz')->name('quiz.enter');
