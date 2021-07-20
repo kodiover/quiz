@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
+use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -11,14 +11,18 @@ class NewUserNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $mail;
+    private $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Mailable $mail, $user)
     {
-        
+        $this->mail = $mail;
+        $this->user = $user;
     }
 
     /**
@@ -26,17 +30,14 @@ class NewUserNotification extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): self
     {
         return $this->from(env('MAIL_FROM_ADDRESS'))
-        ->to('bonjour@mailtrap.io')
-        ->cc('hola@mailtrap.io')
-           ->subject('Auf Wiedersehen')
+           ->subject('Quiz Application')
            ->markdown('mails.exmpl')
            ->with([
-             'name' => 'New Mailtrap User',
-             'link' => '/inboxes/'
+             'user' => User::where('id', $this->user->id)
            ]);
-}
     }
+    
 }
