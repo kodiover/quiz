@@ -3,16 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Events\AnswerReceived;
-use App\PlayerSession;
-use App\QuizSession;
+use App\Models\PlayerSession;
+use App\Models\QuizSession;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\Redis;
 use Livewire\Component;
 
 class PlayQuiz extends Component
 {
     use AuthorizesRequests;
 
+    public $count;
     public $session;
     public $question;
     public $response;
@@ -34,6 +34,7 @@ class PlayQuiz extends Component
     public function render()
     {
         return view('livewire.play-quiz');
+
     }
 
     public function reload($data)
@@ -41,11 +42,6 @@ class PlayQuiz extends Component
         $this->redirect(route('quiz.play', $this->session));
     }
 
-    public function endQuiz()
-    {
-        $this->ended = true;
-        PlayerSession::clear();
-    }
 
     public function storeAnswer($answerKey)
     {
@@ -58,6 +54,19 @@ class PlayQuiz extends Component
     {
         $this->response = optional($this->response)->fresh();
         $this->showAnswer = true;
+    }
+
+    public function end()
+    {
+        foreach($this->question as $key => $option){
+            if (!$this->player->respond($this->question->last(), $key)){
+                $this->ended = true;
+            }else $this->ended = true;
+        }
+        if ($this->ended){
+            PlayerSession::clear();
+            return $this->session->endSession;
+        }
     }
 
     public function mount(QuizSession $quizSession)
@@ -76,7 +85,6 @@ class PlayQuiz extends Component
         $this->response = $this->player->responses()
             ->where('question_id', $this->question->id)
             ->first();
-
         if ($this->response && $this->response->score !== null) {
             $this->showAnswer();
         }

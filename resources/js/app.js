@@ -1,11 +1,7 @@
-import Echo from 'laravel-echo';
+require('./bootstrap');
 
-window.pusher = require('pusher-js');
+import Alpine from 'alpinejs';
 
-window.Echo = new Echo({
-  broadcaster: "pusher",
-  key: process.env.MIX_PUSHER_APP_KEY,
-  wsHost: window.location.hostname,
-  wsPort: 6001,
-  disableStats: true,
-});
+window.Alpine = Alpine;
+
+Alpine.start();

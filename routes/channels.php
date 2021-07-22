@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Broadcast;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -11,13 +13,6 @@
 |
 */
 
-use App\PlayerSession;
-use Illuminate\Support\Facades\Broadcast;
-
-Broadcast::channel('Quiz.{quizSessionId}', function ($user = null, $quizSessionId) {
-    return (int) PlayerSession::id() === (int) $quizSessionId;
-});
-
-Broadcast::channel('Admin.Quiz.{quizSessionId}', function ($user, $quizSessionId) {
-    return !! $user;
+Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
 });
