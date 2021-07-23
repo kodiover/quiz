@@ -3,10 +3,10 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
-            <div class="h-screen flex flex-col justify-center items-center home-page">
-            @if($enteredSession ?? '' )
+        <div class="h-screen flex flex-col justify-center items-center home-page">
+            @if($enteredSession)
             <h3 wire:transition.fade class="text-2xl font-bold py-4 mb-6 text-center">
-                {{ $enteredSession ?? ''->quiz->title }}
+                {{ $enteredSession->quiz->title }}
             </h3>   
             @endif
             <div class="max-w-lg mx-auto container">

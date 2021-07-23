@@ -9,7 +9,7 @@
     @forelse($quizzes as $quiz)
         <div class="w-full bg-black text-black-900 py-3 px-6 rounded border shadow relative mb-4">
             <h3 class="text-lg font-bold pr-12">
-                <a href="{{ url('manage-quiz', $quiz) }}">{{ $quiz->title }}</a>
+                <a href="{{ url('/manage/quizzes', $quiz) }}">{{ $quiz->title }}</a>
             </h3>
             <p class="mt-2">
                 @if(!$quiz->freshSession)

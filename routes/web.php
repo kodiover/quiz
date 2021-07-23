@@ -14,20 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function(){
-//     return view('welcome');
-// });
-
-// Yes that correct but the login should show 
-// mean? because it says logout  
-//okay
-
-
 Route::group(['middleware' => ['guest']], function() {
-    Route::get('/', \App\Http\Livewire\Index::class);// this route should be run right? Yes Okay Okay?
+    Route::get('/', \App\Http\Livewire\Index::class);
     Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class);
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\PlayQuiz::class);
-    // Route::get('/', \App\Http\Livewire\User\Home::class);
 });
 
 Route::group(['middleware' => ['auth', 'verified']], function() {
