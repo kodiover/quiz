@@ -30,7 +30,7 @@ Route::group(['middleware' => ['guest']], function() {
     // Route::get('/', \App\Http\Livewire\User\Home::class);
 });
 
-Route::group(['middleware' => ['verified']], function() {
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/home', \App\Http\Livewire\User\Home::class);
     Route::get('/manage/quizzes/{quiz}', \App\Http\Livewire\User\ManageQuiz::class);
     Route::get('/quiz/{quizSession}', \App\Http\Livewire\User\Quiz::class);
