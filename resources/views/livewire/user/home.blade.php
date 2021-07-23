@@ -1,4 +1,4 @@
-
+<x-app-layout>
     <div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none a-home"
         x-data="{ creating: false }"
         x-init="window.livewire.on('creatingStatus', status => creating = status)">
@@ -71,3 +71,4 @@
             </div>
         </div>
     </div>
+</x-app-layout>
