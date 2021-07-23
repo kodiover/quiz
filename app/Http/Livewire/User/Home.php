@@ -15,7 +15,7 @@ class Home extends Component
     public function render()
     {
 
-        return view('dashboard');
+        return view('livewire.user.home');
     }
 
     public function createQuiz()

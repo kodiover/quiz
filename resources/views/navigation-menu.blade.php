@@ -1,5 +1,5 @@
+@if(Auth::id())
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    @if(Auth::id())
 <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -48,7 +48,7 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profile') }}">
+                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
@@ -90,9 +90,9 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ url('home') }}" :active="request()->routeIs('home')">
+            <!-- <x-jet-responsive-nav-link href="{{ url('home') }}" :active="request()->routeIs('home')">
                 {{ __('Home') }}
-            </x-jet-responsive-nav-link>
+            </x-jet-responsive-nav-link> -->
         </div>
 
         <!-- Responsive Settings Options -->
