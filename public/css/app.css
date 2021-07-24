@@ -52,7 +52,7 @@ body {
 
 /* 
 Navbar Styles
-======
+=============
 */
 
 nav {
@@ -64,12 +64,25 @@ header {
 	background-color: #181a1b;
 }
 
+/* 
+Design Style
+============
+*/
+
 .main {
 	background-color: #181a1b;
 }
 
-span {
-	background-color: #181a1b;
+.index {
+	background-color: #1e2022;
+}
+
+.card {
+	background-color: black;
+}
+
+.box-mod {
+	background-color: #000 !important;
 }
 
 /**
@@ -628,7 +641,7 @@ video {
 	-webkit-appearance: none;
 	   -moz-appearance: none;
 	        appearance: none;
-	background-color: #fff;
+	background-color: #000;
 	border-color: #6b7280;
 	border-width: 1px;
 	border-radius: 0px;

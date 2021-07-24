@@ -1,5 +1,5 @@
 @if(Auth::id())
-<nav x-data="{ open: false }" class="bg-black">
+<nav x-data="{ open: false }" class="bg-black border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black">
         <div class="flex justify-between h-16 bg-black">
@@ -159,10 +159,18 @@
 </nav>
 @else
 
-<x-slot name="header">
-<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-    {{ __('Login') }}
-    <!-- {{ __('Register') }} -->
+<div class="max-screen-w mx-auto px-4 sm:px-6 lg:px-8 border-b border-gray-100">
+    <div class="flex justify-between h-6">
+        
+        <a class="text-white" href="/login">Login</a>
+        <div class="flex">
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-jet-nav-link href="{{ url('home') }}" :active="request()->routeIs('home')">
+                    {{ __('Home') }}
+                </x-jet-nav-link>
+            </div>
+        </div>
+    </div>
+</div>
 
-</x-slot>
 @endif
