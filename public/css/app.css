@@ -46,6 +46,30 @@ Remove the margin in all browsers.
 
 body {
 	margin: 0;
+	background-color: #181a1b;
+
+}
+
+/* 
+Navbar Styles
+======
+*/
+
+nav {
+	background-color: #181a1b;
+	outline: 1px solid #232728;
+}
+
+header {
+	background-color: #181a1b;
+}
+
+.main {
+	background-color: #181a1b;
+}
+
+span {
+	background-color: #181a1b;
 }
 
 /**

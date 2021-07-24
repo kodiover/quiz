@@ -22,10 +22,10 @@
                                 wire:model="pin">   
                     </div>
                 
-                    <div class="text-xl mb-4">
-                            <button type="submit" class="btn-submit">
+                    <div class="text-xl mt-4 btn-submit">
+                            <x-jet-button type="submit" class="btn-submit">
                                 Enter Quiz
-                            </button>
+                            </x-jet-button>
                     </div>
                     @error('pin')
                     <p class="font-bold px-4 mt-2 textbox text-sm error">{{ $message }}</p>

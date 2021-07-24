@@ -1,1 +1,1 @@
-@livewire('index')
+@livewire('home')

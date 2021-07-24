@@ -1,7 +1,9 @@
-
-                 
-
-<div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none a-home"
+<x-slot name="header">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Home') }}
+    </h2>
+</x-slot>                
+<div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none u-home"
     x-data="{ creating: false }"
     x-init="window.livewire.on('creatingStatus', status => creating = status)">
 
@@ -19,7 +21,7 @@
                     </button>
                 
                 @else
-                    <a href="{{ route('user.quiz.start', $quiz->freshSession) }}"
+                    <a href="{{ route('/quiz/', $quiz->freshSession) }}"
                         class="ml-2 px-2 py-1 text-sm rounded bg-orange-500 hover:bg-orange-700 text-blackfont-bold">
                         Resume
                     </a>
