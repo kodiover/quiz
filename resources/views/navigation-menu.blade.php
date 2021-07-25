@@ -159,18 +159,18 @@
 </nav>
 @else
 
-<div class="max-screen-w mx-auto px-4 sm:px-6 lg:px-8 border-b border-gray-100">
-    <div class="flex justify-between h-6">
-        
-        <a class="text-white" href="/login">Login</a>
-        <div class="flex">
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-jet-nav-link href="{{ url('home') }}" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                </x-jet-nav-link>
+<div class="min-screen-w mx-auto px-4 sm:px-6 lg:px-8 separator">
+    <div class="flex justify-between h-16">
+        <div class="flex auth">
+            <!-- Navigation Links -->
+            <div class="flex-shrink-0 flex items-center text-gray-600 hover:text-gray-500">
+                <a href="{{ url('login') }}"> Login </a>
             </div>
+            <div class="ml-2 flex-shrink-0 flex ml-2 items-center text-gray-600 hover:text-gray-500">
+                <a href="{{ url('register') }}"> Register </a>
+            </div>
+        
         </div>
     </div>
 </div>
-
 @endif
