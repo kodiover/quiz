@@ -4,7 +4,7 @@
 
 <script src="{{ mix('js/app.js') }}" defer></script>
 
-<div class="min-h-screen">
+<div class="min-h-screen pt-1">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

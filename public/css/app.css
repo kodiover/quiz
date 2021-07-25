@@ -109,10 +109,14 @@ Design Style
     font-size: 1rem;
     border-radius: 4px;
     box-sizing: border-box;
-    padding: 5px;
-    border: gray;
+	caret-color: white;
+    padding: 5px;   
     background-color: rgb(24, 26, 27);
-  }
+}
+
+.box-mod:focus {
+	box-shadow: var(--darkreader-border--tw-border-opacity);
+}
 
 .auth {
 	width: 100%;
@@ -121,7 +125,7 @@ Design Style
 }
 
 .form-center {
-background-color: rgb(105, 98, 98);
+background-color: #181a1b;
 margin-left: 20px;
 margin-right: 20px;
 border-radius: 4px;

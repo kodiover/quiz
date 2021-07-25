@@ -4,6 +4,9 @@
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
+
+        <x-jet-validation-errors class="mb-4" />
+
         <div class="h-screen flex flex-col justify-center items-center form-center">
             @if($enteredSession)
             <h3 wire:transition.fade class="text-2xl font-bold py-4 mb-6 text-center">
@@ -21,6 +24,8 @@
                                 placeholder="Game PIN"                            
                                 autocomplete="off"
                                 wire:model="pin">   
+                        <!-- <x-jet-input class="block mt-1 w-full" type="number" name="number" :value="old('number')" required autofocus /> -->
+
                     </div>
                 
                     <div class="text-xl mt-4 mb-4">
@@ -35,19 +40,19 @@
                 @else
                 <div class="max-w-lg mx-auto container">
                     <h2 class="mb-6 text-4xl font-bold text-center text-black py-2">Enter Nickname</h2>
-                    <form wire:transition.fade wire:key="ready-for-quiz" wire:submit.prevent="ready" class="text-center form-center">
+                    <form method="POST" wire:submit.prevent="ready" class="text-center form-center">
                         <div class="text-xl text-black container2">
-                            <input type="text"
+                            <!-- <input type="text"
                                 class="w-full px-4 py-2 textbox tracking-widest rounded shadow-md box-mod"
                                 placeholder="Nickname"
                                 required autocomplete="off"
-                                wire:model="nickname">                                                   
+                                wire:model="nickname">                                                    -->
                         </div>
                         <div class="text-xl mb-4">
-                            <button type="submit"
+                            <x-jet-button type="submit"
                                 class="px-4 py-2 text-white bg-blue-700 hover:bg-blue-600 font-bold rounded shadow-lg button">
                                 Ready!
-                            </button>
+                            </x-jet-button>
                         </div>
                         @error('nickname')
                         <p class="px-4 mt-1 text-sm error">{{ $message }}</p>
