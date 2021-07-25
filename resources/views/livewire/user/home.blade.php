@@ -1,15 +1,15 @@
 <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    <h2 class="font-semibold text-xl header-color leading-tight">
         {{ __('Home') }}
     </h2>
 </x-slot>                
-<div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none u-home"
+<div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none bg-gray-300"
     x-data="{ creating: false }"
     x-init="window.livewire.on('creatingStatus', status => creating = status)">
 
-    <h2 class="text-center text-4xl text-black font-bold italic mt-6 mb-8">Quizzes</h2>
+    <h2 class="text-center text-4xl text-white font-bold italic mt-6 mb-8">Quizzes</h2>
     @forelse($quizzes as $quiz)
-        <div class="w-full bg-black text-black-900 py-3 px-6 rounded border shadow relative mb-4">
+        <div class="w-full bg-black text-white py-3 px-6 rounded border shadow relative mb-4">
             <h3 class="text-lg font-bold pr-12">
                 <a href="{{ url('/manage/quizzes', $quiz) }}">{{ $quiz->title }}</a>
             </h3>
@@ -44,10 +44,10 @@
         </div>
 
         @empty
-        <p class="text-black text-center">No quizzes created.</p>
+        <p class="text-white text-center">No quizzes created.</p>
         
         @endforelse
-    <div class="bottom-0 ml-12 mt-12 z-10 text-right">
+    <div class="bottom-0 ml-12 mt-12 z-10 text-right plus">
         <button class="bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow p-3" @click="creating = true">
             <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="2" y1="10" x2="18" y2="10"></line>

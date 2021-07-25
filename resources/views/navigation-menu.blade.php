@@ -1,12 +1,11 @@
 @if(Auth::id())
-<nav x-data="{ open: false }" class="bg-black border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
+<nav x-data="{ open: false }" class="bg-black border-b border-gray-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black">
         <div class="flex justify-between h-16 bg-black">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ url('/home') }}">
+                    <a href="/home">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -31,7 +30,7 @@
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-black hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-black hover:text-gray-400 focus:outline-none transition ease-in-out duration-150">
                                         {{ Auth::user()->name }}
 
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -58,7 +57,7 @@
                                 </x-jet-dropdown-link>
                             @endif
 
-                            <div class="border-t border-gray-100"></div>
+                            <div class="border-t border-gray-300"></div>
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
