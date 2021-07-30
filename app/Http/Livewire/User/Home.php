@@ -35,9 +35,9 @@ class Home extends Component
 
     public function deleteQuiz($quizId)
     {
-        $this->quizzes->get($quizId, optional())->delete();
-
-        $this->quizzes->forget($quizId);
+        Quiz::where('id', $quizId)->delete();
+        // $this->quizzes->get($quizId, optional())->delete();
+        // $this->quizzes->forget($quizId);
     }
 
     public function startSession($quizId)
@@ -54,7 +54,7 @@ class Home extends Component
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect()->route('user.quiz.start', $session);
+        // return redirect()->route('quiz.start', $session);
     }
 
     public function abandonAndStartNewSession($quizId, $sessionId)

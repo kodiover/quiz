@@ -21,6 +21,7 @@ class Index extends Component
 
     public function enter()
     {
+        dd("hii");
         // Checks is pin is valid and generates error message
         $this->validate([
             'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']

@@ -89,6 +89,8 @@ Design Style
 
 .main {
 	background-color: #1e2022;
+	padding-left: 80px;
+	padding-right: 80px;
 }
 
 .index {
@@ -1599,11 +1601,13 @@ select {
 }
 .bg-gray-800 {
 	--tw-bg-opacity: 1;
-	background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+	/* background-color: rgba(31, 41, 55, var(--tw-bg-opacity)); */
+	background-color: #19212c;
 }
 .bg-red-100 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
+
 }
 .bg-gray-50 {
 	--tw-bg-opacity: 1;
@@ -1789,11 +1793,11 @@ select {
 }
 .text-gray-700 {
 	--tw-text-opacity: 1;
-	color: rgba(55, 65, 81, var(--tw-text-opacity));
+	color: rgb(189, 183, 175)
 }
 .text-gray-600 {
 	--tw-text-opacity: 1;
-	color: rgba(75, 85, 99, var(--tw-text-opacity));
+	color: rgb(177, 170, 160);
 }
 .text-white {
 	--tw-text-opacity: 1;
@@ -1809,7 +1813,8 @@ select {
 }
 .text-gray-900 {
 	--tw-text-opacity: 1;
-	color: rgba(17, 24, 39, var(--tw-text-opacity));
+	color: rgb(214, 211, 205)	;
+	/* color: rgba(17, 24, 39, var(--tw-text-opacity)); */
 }
 .text-indigo-700 {
 	--tw-text-opacity: 1;
@@ -1950,9 +1955,11 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
 }
-.hover\:bg-red-600:hover {
+.hover\:bg-gray-600:hover {
 	--tw-bg-opacity: 1;
-	background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
+	/* background-color: rgba(220, 38, 38, var(--tw-bg-opacity)); */
+	background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+
 }
 .hover\:bg-gray-700:hover {
 	--tw-bg-opacity: 1;

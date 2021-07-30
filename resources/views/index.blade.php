@@ -15,7 +15,7 @@
             @endif
             <div class="max-w-lg mx-auto container">
                 @if(! $enteredSession ?? '' )
-                <h2 class="text-4xl font-bold text-center text-black py-2">Enter Quiz Pin</h2>
+                <h2 class="text-4xl font-bold text-center text-white py-2">Enter Quiz Pin</h2>
 
                 <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
                     <div class="text-xl text-black">
@@ -24,18 +24,16 @@
                                 placeholder="Game PIN"                            
                                 autocomplete="off"
                                 wire:model="pin">   
-                        <!-- <x-jet-input class="block mt-1 w-full" type="number" name="number" :value="old('number')" required autofocus /> -->
+                        <!-- <x-jet-input class="block mt-1 w-full text-center" type="tel" wire:model.defer="pin" placeholder="Game PIN" :value="old('tel')" required autofocus wire:model="pin" /> -->
 
                     </div>
                 
                     <div class="text-xl mt-4 mb-4">
-                            <x-jet-button type="submit" class="btn-submit">
-                                Enter Quiz
-                            </x-jet-button>
+                        <button type="submit" class="text-white hover:bg-gray-700 font-bold rounded shadow-lg button">
+                            Enter Quiz
+                        </button>
                     </div>
-                    @error('pin')
-                    <p class="font-bold px-4 mt-2 textbox text-sm error">{{ $message }}</p>
-                    @enderror
+                    
                 </form>
                 @else
                 <div class="max-w-lg mx-auto container">
