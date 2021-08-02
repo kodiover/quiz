@@ -71,7 +71,7 @@ header {
 
 .separator {
 	border-bottom-width: 1px;
-	outline: 1px solid gray;
+	border-color: rgb(60, 65, 67);
 }
 
 .dropdown {
@@ -89,6 +89,7 @@ Design Style
 
 .main {
 	background-color: #1e2022;
+	min-height: 100vh;
 	padding-left: 80px;
 	padding-right: 80px;
 }
@@ -103,7 +104,7 @@ Design Style
 
 
 .box-mod {
-    min-width: 10rem;
+    min-width: 12rem;
     min-height: 2.375rem;
     max-width: 18rem;
     max-height: 48px;
@@ -152,6 +153,12 @@ text-align: center;
 
 .plus {
 	margin-right: 200px;
+}
+
+.text-title {
+	font-size: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 15px;
 }
 
 /**
@@ -649,7 +656,7 @@ object {
 
 img,
 video {
-  max-width: 100%;
+  max-width: 65%;
   height: auto;
 }
 

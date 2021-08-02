@@ -14,7 +14,7 @@ class QuizLeaderboard extends Component
 
     public function render()
     {
-        return view('livewire.admin.quiz-leaderboard', [
+        return view('livewire.user.quiz-leaderboard', [
             'players' => QuizPlayer::whereQuizSessionId($this->sessionId)
                 ->orderBy('score', 'desc')
                 ->limit(7)

@@ -1,5 +1,5 @@
 <div class="max-w-screen-md px-4 mx-auto relative x9oAws">
-    <h2 class="text-3xl text-center text-black font-bold italic">{{ $quiz->title }}</h2>
+    <h2 class="text-3xl text-center text-white text-title italic">{{ $quiz->title }}</h2>
     <p class="flex items-center text-black justify-center font-bold mb-8">
         <span class="flex-1 text-right">{{ $quiz->questions->count() }} Questions</span> <!-- Counts the no. of Qs via ->count() -->
         <span class="mx-4">|</span>
@@ -75,8 +75,14 @@
     <div class="bottom-0 ml-12 mt-12 z-10 text-right"
         x-data="{ creating: false }"
         x-init="window.livewire.on('closeModal', () => creating = false)">
-            <button class="fas fa-plus fa-3x text-black hover:text-blue-700" @click="creating = true">
+        <div class="bottom-0 ml-12 mt-12 z-10 text-right plus">
+            <button class="px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition" @click="creating = true">
+                <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="2" y1="10" x2="18" y2="10"></line>
+                    <line x1="10" y1="2" x2="10" y2="18"></line>
+                </svg>
             </button>
+        </div>
         {{-- Add New Question Modal --}}
         <div wire:ignore.self
             x-show.fade="creating"

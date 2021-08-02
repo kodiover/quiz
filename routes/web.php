@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Quiz;
 use App\Models\QuizSession;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest']], function() {
     Route::get('/', \App\Http\Livewire\Index::class);
+    
+    Route::post('/quiz/{quizSession}', function (Quiz $quiz) {
+        return redirect()->route('user.quiz', $quiz);
+    })->name('quiz');
+
     Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class);
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\PlayQuiz::class);
 });
@@ -27,7 +33,6 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\User\PlayQuiz::class);
     Route::get('/quiz/{quizSession}/leaderboard', \App\Http\Livewire\User\QuizLeaderboard::class);
 
-
         Route::post('/quiz/{quizSession}/next', function (QuizSession $quizSession) {
             $question = $quizSession->nextQuestion($delayInSeconds = 1);
 
@@ -38,3 +43,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
             return redirect()->route('user.quiz.play', $quizSession);
         })->name('user.quiz.next');
 });
+
+
+
+

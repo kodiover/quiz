@@ -6,6 +6,7 @@ use App\Events\PlayerJoined;
 use App\Models\PlayerSession;
 use App\Models\QuizSession;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Index extends Component
@@ -14,6 +15,23 @@ class Index extends Component
     public $nickname = '';
     public $enteredSession = null;
 
+    // public function rules()
+    // {
+    //     return [
+    //         'pin' => 'required|min:6|exists:quiz_sessions,pin',
+    //         'nickname' => ['required|max:100|', Rule::unique('quiz_players', 'nickname')
+    //                     ->where('quiz_session_id', $this->enteredSession->id)],
+    //     ];
+    // }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName, [
+            'pin' => 'min:6',
+            'nickname' => 'max:100',
+        ]);
+    }
+
     public function render()
     {
         return view('index');
@@ -21,15 +39,24 @@ class Index extends Component
 
     public function enter()
     {
-        dd("hii");
         // Checks is pin is valid and generates error message
-        $this->validate([
-            'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
-        ]);
+        // $this->validate([
+        //     'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
+        // ]);
 
+        // $validateData = $this->validate([
+        //     'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
+        // ]);
+        // QuizSession::create($validateData);
+        // dd($validateData);
+
+        $validatedData = Validator::make(
+            ['pin' => $this->pin],
+            ['pin' => 'required|numeric','digits:6','exists:quiz_sessions,pin'],
+            ['required' => 'The :attribute field is required'],
+        )->validate();
         
         $this->enteredSession = QuizSession::with('quiz')->where('pin', $this->pin)->first();
-
         PlayerSession::id($this->enteredSession->id);
         }
 
@@ -42,6 +69,8 @@ class Index extends Component
                     ->where('quiz_session_id', $this->enteredSession->id)
             ]
         ]);
+
+        $this->validate();
 
         $player = $this->enteredSession->joinAs($this->nickname);
 

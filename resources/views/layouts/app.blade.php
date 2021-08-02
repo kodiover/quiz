@@ -7,7 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Logo -->
-        <link rel="shortcut icon" type="image/x-icon" href="quizlogo.png" />
+        <!-- <img src="{{ asset('images/quizlogo.png') }}" alt=""/> -->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/quizlogo.png') }}"/>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -30,9 +31,9 @@
             @if (isset($header))
                 <header class="shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <!-- <h2 class="font-semibold text-xl text-white leading-tight"> -->
+                        <h2 class="font-semibold text-xl text-white leading-tight">
                             {{ $header }}
-                        <!-- </h2> -->
+                        </h2>
                     </div>
                 </header>
             @endif

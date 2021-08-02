@@ -33,9 +33,7 @@
                         @error('options')
                             <p class="mb-1 text-red-600">{{ $message }}</p>
                         @enderror
-                        <button id="delete-question" type="button"
-                            class="leading-none font-bold p-2 rounded text-red-600 hover:bg-black hover:text-black"
-                            wire:click="removeOption({{ $index }})">&cross;</button>
+                        
                     </div>
                 @endforeach
             </div>

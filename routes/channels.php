@@ -1,6 +1,6 @@
 <?php
 
-use App\PlayerSession;
+use App\Models\PlayerSession;
 use Illuminate\Support\Facades\Broadcast;
 
 /*

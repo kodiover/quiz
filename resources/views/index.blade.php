@@ -3,6 +3,7 @@
         
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
+            
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -14,26 +15,31 @@
             </h3>   
             @endif
             <div class="max-w-lg mx-auto container">
-                @if(! $enteredSession ?? '' )
+                @if(! $enteredSession )
                 <h2 class="text-4xl font-bold text-center text-white py-2">Enter Quiz Pin</h2>
 
-                <form wire:transition.fade wire:key="enter-quiz" wire:submit.prevent="enter" class="text-center form-center">
+                <form wire:transition.fade wire:key="enter-quiz" class="form-center">
+                    <!-- @csrf -->
                     <div class="text-xl text-black">
-                        <input type="tel"
-                                class="w-full py-2 text-center tracking-widest rounded shadow-md box-mod"
+                        <input class="block w-full text-center border-gray-300 focus:border-blue-300 focus:ring                  focus:ring-blue-300 focus-ring-opacity-1 rounded-md shadow-sm"
+                                type="tel"
                                 placeholder="Game PIN"                            
                                 autocomplete="off"
+                                autofocus
                                 wire:model="pin">   
-                        <!-- <x-jet-input class="block mt-1 w-full text-center" type="tel" wire:model.defer="pin" placeholder="Game PIN" :value="old('tel')" required autofocus wire:model="pin" /> -->
+                        <!-- <x-jet-label for="pin" /> -->
+                        <!-- <input class="block mt-1 w-full text-center" type="tel" wire:model="pin" placeholder="Game PIN"  autofocus value="{{old('pin')}}"/> -->
 
                     </div>
                 
                     <div class="text-xl mt-4 mb-4">
-                        <button type="submit" class="text-white hover:bg-gray-700 font-bold rounded shadow-lg button">
+                        <button type="submit" wire:click="enter" class="px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition btn-submit">
                             Enter Quiz
                         </button>
                     </div>
-                    
+                    @error('pin')
+                        <p class="px-4 mt-1 text-sm error">{{ $message }}</p>
+                    @enderror
                 </form>
                 @else
                 <div class="max-w-lg mx-auto container">
@@ -47,10 +53,10 @@
                                 wire:model="nickname">                                                    -->
                         </div>
                         <div class="text-xl mb-4">
-                            <x-jet-button type="submit"
+                            <button type="submit"
                                 class="px-4 py-2 text-white bg-blue-700 hover:bg-blue-600 font-bold rounded shadow-lg button">
                                 Ready!
-                            </x-jet-button>
+                            </button>
                         </div>
                         @error('nickname')
                         <p class="px-4 mt-1 text-sm error">{{ $message }}</p>

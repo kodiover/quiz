@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\User;
 use App\Models\Quiz;
 use App\Models\QuizSession;
 use Livewire\Component;
@@ -14,8 +15,19 @@ class Home extends Component
 
     public function render()
     {
-
         return view('livewire.user.home');
+    }
+
+    public function checkUser()
+    {
+        if ($this->creating){
+            dd('hii');
+            // User::where('user_type', null)->update(['user_type' => '0']);
+            $users = User::where('user_type', '=', 1)->first();
+            if ($users == 1){
+                unset($this->quizzes[count($this->quizzes -1)]);
+            } 
+        }
     }
 
     public function createQuiz()
@@ -26,7 +38,13 @@ class Home extends Component
 
         $quiz = Quiz::create(['title' => $this->quizTitle]);
 
+        if ($this->quizzes != null){
+            // $this->creating == true;
+            dd('hqq');
+        }
+
         $this->quizTitle = '';
+
 
         $this->quizzes->put($quiz->id, $quiz);
 
@@ -36,6 +54,7 @@ class Home extends Component
     public function deleteQuiz($quizId)
     {
         Quiz::where('id', $quizId)->delete();
+
         // $this->quizzes->get($quizId, optional())->delete();
         // $this->quizzes->forget($quizId);
     }

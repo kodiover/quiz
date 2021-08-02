@@ -37,7 +37,7 @@
                 </div>
                 @endforeach
             </div>
-            <form class="py-12" action="{{ route('admin.quiz.next', $session) }}" method="POST">
+            <form class="py-12" action="{{ route('user.quiz.next', $session) }}" method="POST">
                 @csrf
                 <button class="px-4 py-2 font-bold bg-blue-700 text-white rounded text-xl">Next &NestedGreaterGreater;</button>
             </div>
