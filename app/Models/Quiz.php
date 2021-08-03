@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Quiz extends Model
 {
     // Defined variable to allow for 'title' to be overriden
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'user_id'];
 
     public function startSession($pin)
     {
@@ -41,4 +41,6 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class, 'quiz_id');
     }
+
+    
 }

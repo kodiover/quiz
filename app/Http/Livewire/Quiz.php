@@ -27,7 +27,7 @@ class Quiz extends Component
 
     public function redirectToPlay()
     {
-        return redirect()->route('quiz.play', $this->session);
+        return redirect(route('quiz.play', $this->session));
     }
 
     public function end()

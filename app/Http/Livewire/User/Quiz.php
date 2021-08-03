@@ -32,7 +32,7 @@ class Quiz extends Component
 
         event(new QuizSessionStarted($this->session));
 
-        return redirect()->route('user.quiz.play', $this->session);
+        return redirect(route('user.quiz.play', $this->session));
     }
 
     public function mount(QuizSession $quizSession)
@@ -40,7 +40,7 @@ class Quiz extends Component
         $this->session = $quizSession;
 
         if ($this->session->isActive()) {
-            return redirect()->route('user.quiz.play', $this->session);
+            return redirect(route('user.quiz.play', $this->session));
         }
     }
 }

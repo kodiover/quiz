@@ -7,7 +7,7 @@
     <x-jet-validation-errors class="mb-4" />
 
     @php
-        $this->checkUser();
+      
     @endphp
 
     <div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none bg-gray-300"
@@ -29,7 +29,7 @@
                         </button>
                     
                     @else
-                        <a href="{{ route('/quiz/', $quiz->freshSession) }}"
+                        <a href="{{ url('/quiz/', $quiz->freshSession) }}"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Resume
                         </a>

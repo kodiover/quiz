@@ -6,7 +6,7 @@ use App\Events\PlayerJoined;
 use App\Models\PlayerSession;
 use App\Models\QuizSession;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,21 +15,13 @@ class Index extends Component
     public $nickname = '';
     public $enteredSession = null;
 
-    // public function rules()
-    // {
-    //     return [
-    //         'pin' => 'required|min:6|exists:quiz_sessions,pin',
-    //         'nickname' => ['required|max:100|', Rule::unique('quiz_players', 'nickname')
-    //                     ->where('quiz_session_id', $this->enteredSession->id)],
-    //     ];
-    // }
-
-    public function updated($propertyName)
+    public function rules()
     {
-        $this->validateOnly($propertyName, [
-            'pin' => 'min:6',
-            'nickname' => 'max:100',
-        ]);
+        return [
+            'pin' => 'required|min:6|exists:quiz_sessions,pin',
+            'nickname' => ['required|max:100|', Rule::unique('quiz_players', 'nickname')
+                        ->where('quiz_session_id', $this->enteredSession->id)],
+        ];
     }
 
     public function render()
@@ -39,25 +31,14 @@ class Index extends Component
 
     public function enter()
     {
-        // Checks is pin is valid and generates error message
-        // $this->validate([
-        //     'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
-        // ]);
+        $this->validate([
+            'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
+        ]);
 
-        // $validateData = $this->validate([
-        //     'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
-        // ]);
-        // QuizSession::create($validateData);
-        // dd($validateData);
-
-        $validatedData = Validator::make(
-            ['pin' => $this->pin],
-            ['pin' => 'required|numeric','digits:6','exists:quiz_sessions,pin'],
-            ['required' => 'The :attribute field is required'],
-        )->validate();
         
         $this->enteredSession = QuizSession::with('quiz')->where('pin', $this->pin)->first();
         PlayerSession::id($this->enteredSession->id);
+        $this->validate();
         }
 
     public function ready()
@@ -76,7 +57,7 @@ class Index extends Component
 
         event(new PlayerJoined($player, $this->enteredSession));
 
-        return redirect()->route('quiz.enter', $this->enteredSession);
+        return redirect(route('quiz', $this->enteredSession));
     }
 
     public function mount()
@@ -91,7 +72,7 @@ class Index extends Component
             $this->nickname = $nickname;
             $this->enteredSession->joinAs($nickname);
 
-            return redirect()->route('quiz.enter', $this->enteredSession);
+            return redirect(route('quiz', $this->enteredSession));
         }
     }
 }

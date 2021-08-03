@@ -17,7 +17,7 @@
                 @enderror
             </div>
             <div class="flex items-baseline mt-3 mb-1 leading-none">
-                <h2 class="mr-4 text-xs uppercase font-bold tracking-wide text-white">Options</label>
+                <h2 class="mr-4 text-xs uppercase font-bold tracking-wide text-white">Options</label>   
                 <button wire:click="removeOption" type="button"
                     class="px-2 border text-white bg:black rounded">-</button>
                 <button wire:click="addOption" type="button"
@@ -25,7 +25,7 @@
             </div>
             <div>
                 @foreach($options as $index => $option)
-                    <div class="flex items-center mb-2" wire:key="{{$index}}-$option">
+                    <div class="flex items-center mb-2" wire:key="{{$loop->index}}">
                         <p class="mr-2 font-bold">{{ $this->keys($index) }}) </p>
                         <input type="text" wire:model="options.{{ $index }}"
                             class="w-full px-3 py-2 border rounded bg-black text-white flex-1 mr-2"
@@ -47,7 +47,6 @@
                     @foreach($options as $index => $option)
                     <option value="{{$loop->index}}"
                         wire:key="{{$loop->index -1}}-option"
-                        {{ $loop->index === (int) $correctOptionIndex ? 'selected' : '' }}
                         >
                         {{ $this->keys($loop->index) }}) {{ $option }}
                     </option>

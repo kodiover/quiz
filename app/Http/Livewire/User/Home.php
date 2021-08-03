@@ -6,42 +6,28 @@ use App\Models\User;
 use App\Models\Quiz;
 use App\Models\QuizSession;
 use Livewire\Component;
+use Auth;
 
 class Home extends Component
 {
     public $quizzes = [];
-    public $creating = false;
     public $quizTitle = '';
+    public $creating = false;
 
     public function render()
     {
-        return view('livewire.user.home');
+        $user_type = Auth::user()->user_type;
+        return view('livewire.user.home',compact('user_type'));
     }
 
-    public function checkUser()
-    {
-        if ($this->creating){
-            dd('hii');
-            // User::where('user_type', null)->update(['user_type' => '0']);
-            $users = User::where('user_type', '=', 1)->first();
-            if ($users == 1){
-                unset($this->quizzes[count($this->quizzes -1)]);
-            } 
-        }
-    }
 
     public function createQuiz()
     {
         $this->validate([
             'quizTitle' => 'required|string|min:5|max:190'
         ]);
-
-        $quiz = Quiz::create(['title' => $this->quizTitle]);
-
-        if ($this->quizzes != null){
-            // $this->creating == true;
-            dd('hqq');
-        }
+        $user_id = Auth::user()->id;
+        $quiz = Quiz::create(['title' => $this->quizTitle,'user_id' => $user_id]); // i'm saying this Ahh okay 
 
         $this->quizTitle = '';
 
@@ -61,19 +47,20 @@ class Home extends Component
 
     public function startSession($quizId)
     {
-
+        
         // dd($this->quizzes->get($quizId));
-	    if(isset($this->quizzes)){
-            foreach ($this->quizzes as $key => $value) {
-                $quiz = $this->quizzes[$key];
-            }
-        }
-
-        $quiz = $this->quizzes[$quizId];
+        // this is need? I think so
+        // dd($quizId);
+	    // if(isset($this->quizzes)){
+        //     foreach ($this->quizzes as $key => $value) {
+        //         $quiz = $this->quizzes[$key];
+        //     }
+        // }
+        $quiz = Quiz::where('id', $quizId)->first();
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        // return redirect()->route('quiz.start', $session);
+        return redirect(route('users.quiz', $session));
     }
 
     public function abandonAndStartNewSession($quizId, $sessionId)
@@ -84,18 +71,19 @@ class Home extends Component
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect()->route('user.quiz.start', $session);
+        return redirect(route('user.quiz', $session));
     }
 
     public function discardSession($sessionId)
     {
         QuizSession::where('id', $sessionId)->delete();
 
-        return redirect()->route('home');
+        return redirect(route('user.home'));
     }
 
     public function mount()
     {
-        $this->quizzes = Quiz::withFreshSession()->get()->keyBy('id');
+        $user_id = Auth::user()->id;
+        $this->quizzes = Quiz::withFreshSession()->where('user_id',$user_id)->get()->keyBy('id');
     }
 }
