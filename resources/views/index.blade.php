@@ -37,18 +37,18 @@
                 @else
                 <div class="max-w-lg mx-auto container">
                     <h2 class="text-4xl font-bold text-center text-white py-2">Enter Nickname</h2>
-                    <form wire.transition.fade wire:submit.prevent="ready" class="text-center form-center">
+                    <form wire.transition.fade wire:submit.prevent="ready" class="text-center form-center border border-gray-300">
                         <div class="text-xl text-black container2">
-                        <x-jet-input id="pin" class="box-mod"
-                                type="tel"
-                                placeholder="Nickname"                            
-                                autocomplete="off"
-                                autofocus
-                                wire:model="nickname"/> 
-                        <div class="text-xl mt-4">
-                        <x-jet-button type="submit" class="btn-submit">
-                            Ready
-                        </x-jet-button>
+                            <x-jet-input id="pin" class="box-mod"
+                                    type="tel"
+                                    placeholder="Nickname"                            
+                                    autocomplete="off"
+                                    autofocus
+                                    wire:model="nickname"/> 
+                            <div class="text-xl mt-4">
+                            <x-jet-button type="submit" class="btn-submit">
+                                Ready
+                            </x-jet-button>
                         </div>
                     </form>
                 </div>

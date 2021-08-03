@@ -42,5 +42,9 @@ class Quiz extends Model
         return $this->hasMany(Question::class, 'quiz_id');
     }
 
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
     
 }

@@ -1678,6 +1678,11 @@ select {
 	-o-object-fit: cover;
 	   object-fit: cover;
 }
+
+.p-0 {
+	padding: 0rem;
+}
+
 .p-2 {
 	padding: 0.5rem;
 }

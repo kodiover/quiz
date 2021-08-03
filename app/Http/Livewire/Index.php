@@ -6,7 +6,7 @@ use App\Events\PlayerJoined;
 use App\Models\PlayerSession;
 use App\Models\QuizSession;
 use Illuminate\Validation\Rule;
-// use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Index extends Component
@@ -51,13 +51,15 @@ class Index extends Component
             ]
         ]);
 
-        $this->validate();
+        $this->enteredSession = QuizSession::with('quiz')->where('nickname', $this->nickname)->first();
 
         $player = $this->enteredSession->joinAs($this->nickname);
 
         event(new PlayerJoined($player, $this->enteredSession));
 
-        return redirect(route('quiz', $this->enteredSession));
+        $this->validate();
+
+        return redirect(route('quiz.start', $this->enteredSession));
     }
 
     public function mount()
@@ -72,7 +74,7 @@ class Index extends Component
             $this->nickname = $nickname;
             $this->enteredSession->joinAs($nickname);
 
-            return redirect(route('quiz', $this->enteredSession));
+            return redirect(route('quiz.start', $this->enteredSession));
         }
     }
 }

@@ -23,37 +23,38 @@
                 <p class="mt-2">
                     @if(!$quiz->freshSession)
 
-                        <button wire:click="startSession({{ $quiz->id }})"
+                        <x-jet-button wire:click="startSession({{ $quiz->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Start
-                        </button>
+                        </x-jet-button>
                     
                     @else
-                        <a href="{{ url('/quiz/', $quiz->freshSession) }}"
+
+                        <x-jet-button wire:click="resumeSession({{ $quiz->freshSession }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Resume
-                        </a>
-                        <button wire:click="abandonAndStartNewSession({{ $quiz->id }}, {{ $quiz->freshSession->id }})"
+                        </x-jet-button>
+
+                        <x-jet-button wire:click="abandonAndStartNewSession({{ $quiz->id }}, {{ $quiz->freshSession->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Abandon and Start New
-                        </button>
+                        </x-jet-button>
                         
-                        <button wire:click="discardSession({{ $quiz->freshSession->id }})"
+                        <x-jet-button wire:click="discardSession({{ $quiz->freshSession->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Discard Session
-                        </button>
+                        </x-jet-button>
                         
                     @endif
-                    <button wire:click="deleteQuiz({{$quiz->id}})"
+
+                    <x-jet-button wire:click="deleteQuiz({{$quiz->id}})"
                         class="ml-2 px-2 py-1 text-sm rounded font-bold">
                         Delete
-                    </button>
+                    </x-jet-button>
                 </p>
             </div>
-
             @empty
-            <p class="text-white text-center">No quizzes created.</p>
-            
+                <p class="text-white text-center">No quizzes created.</p>
             @endforelse
         <div class="bottom-0 ml-12 mt-12 z-10 text-right plus">
             <button class="bg-black hover:bg-blue-700 text-white rounded-full shadow p-3" @click="creating = true">
