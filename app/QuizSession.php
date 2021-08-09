@@ -8,7 +8,7 @@ use App\Events\QuizSessionEnded;
 
 class QuizSession extends Model
 {
-    protected $fillable = ['pin', 'started_at', 'ended_at', 'next_question_at', 'current_question_index'];
+    protected $fillable = ['pin', 'created_at', 'started_at', 'ended_at', 'next_question_at', 'current_question_index'];
 
     protected $casts = [
         'next_question_at' => 'datetime',
@@ -97,7 +97,7 @@ class QuizSession extends Model
 
     public function isFresh()
     {
-        return ! $this->started_at && ! $this->ended_at;
+        return $this->created_at && ! $this->started_at;
     }
 
     public function isStale()

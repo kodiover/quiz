@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\User;
 
 use App\Quiz;
 use App\QuizSession;
@@ -9,12 +9,12 @@ use Livewire\Component;
 class Home extends Component
 {
     public $quizzes = [];
-    public $creating = false;
+    public $sessions = [];
     public $quizTitle = '';
+    public $creating, $isFresh = false;
 
     public function render()
     {
-
         return view('livewire.user.home');
     }
 
@@ -35,6 +35,8 @@ class Home extends Component
 
     public function deleteQuiz($quizId)
     {
+        // Quiz::where('id', $quizId)->delete();
+
         $this->quizzes->get($quizId, optional())->delete();
 
         $this->quizzes->forget($quizId);
@@ -42,41 +44,62 @@ class Home extends Component
 
     public function startSession($quizId)
     {
+        $quiz = $this->quizzes[$quizId];
 
-        // dd($this->quizzes->get($quizId));
-	    if(isset($this->quizzes)){
-            foreach ($this->quizzes as $key => $value) {
+        if (isset($this->quizzes)){
+            foreach ($this->quizzes as $key => $value){
                 $quiz = $this->quizzes[$key];
             }
         }
 
-        $quiz = $this->quizzes[$quizId];
-
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
+
+        $this->sessions->put($session->id, $session);
+
+        $this->checkState($quizId);
 
         return redirect()->route('user.quiz.start', $session);
     }
 
-    public function abandonAndStartNewSession($quizId, $sessionId)
+    public function checkState($quizId)
     {
-        QuizSession::where('id', $sessionId)->where('quiz_id', $quizId)->delete();
+        $session = QuizSession::where('quiz_id', $quizId)->get()->first();
+        dd($session);
+        if ($session->isFresh()){
+            $this->isFresh = true;
+        }
+    }
+
+    public function abandonAndStartNewSession($quizId)
+    {
+        $session = QuizSession::where('quiz_id', $quizId)->latest('id');
+
+        $this->sessions->get($session->id, optional())->delete();
+
+        $this->sessions->forget($session->id);
 
         $quiz = $this->quizzes[$quizId];
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
+        $this->sessions->put($session->id, $session);
+
         return redirect()->route('user.quiz.start', $session);
     }
 
-    public function discardSession($sessionId)
+    public function discardSession($quizId)
     {
-        QuizSession::where('id', $sessionId)->delete();
-
+        QuizSession::where('quiz_id', $quizId)->latest('id')->delete();
+        
         return redirect()->route('home');
     }
 
     public function mount()
     {
-        $this->quizzes = Quiz::withFreshSession()->get()->keyBy('id');
+        $this->quizzes = Quiz::get()->keyBy('id');
+
+        $this->sessions = QuizSession::latest('id')->get()->keyBy('id');
+
+        // dd($this->sessions);
     }
-}
+}   

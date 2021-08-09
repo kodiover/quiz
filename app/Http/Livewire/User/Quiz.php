@@ -12,7 +12,7 @@ class Quiz extends Component
 
     protected function getListeners() {
         return [
-            "echo:private-Admin.Quiz.{$this->session['id']},PlayerJoined" => 'loadPlayers'
+            "echo:private-User.Quiz.{$this->session['id']},PlayerJoined" => 'loadPlayers'
         ];
     }
 

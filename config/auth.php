@@ -68,7 +68,7 @@ return [
     'providers' => [
         'admin' => [
             'driver' => 'config',
-            'password' => env('ADMIN_PASSWORD', 'passw0rd'),
+            'password' => env('ADMIN_PASSWORD', 'secret'),
             'name' => env('ADMIN_NAME', 'admin'),
         ],
         'users' => [

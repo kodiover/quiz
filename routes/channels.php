@@ -22,6 +22,6 @@ Broadcast::channel('Quiz.{quizSessionId}', function ($user = null, $quizSessionI
     return (int) PlayerSession::id() === (int) $quizSessionId;
 });
 
-Broadcast::channel('Admin.Quiz.{quizSessionId}', function ($user, $quizSessionId) {
+Broadcast::channel('User.Quiz.{quizSessionId}', function ($user, $quizSessionId) {
     return !! $user;
 });

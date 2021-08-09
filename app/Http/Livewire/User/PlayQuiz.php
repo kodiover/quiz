@@ -18,7 +18,7 @@ class PlayQuiz extends Component
     public function getListeners()
     {
         return [
-            "echo:private-Admin.Quiz.{$this->session['id']},AnswerReceived" => 'addAnswer'
+            "echo:private-User.Quiz.{$this->session['id']},AnswerReceived" => 'addAnswer'
         ];
     }
 
@@ -86,7 +86,7 @@ class PlayQuiz extends Component
 
         if ($quizSession->current_question_index === null || $quizSession->ended_at) {
             $this->question = $quizSession->quiz->questions->last();
-            return redirect(route('admin.quiz.leaderboard', $quizSession));
+            return redirect(route('user.quiz.leaderboard', $quizSession));
         }
 
         $this->question = $quizSession->quiz->questions->get($quizSession->current_question_index, null);
@@ -94,7 +94,7 @@ class PlayQuiz extends Component
         $this->responses = $quizSession->responses()
             ->where('question_id', $this->question)
             ->get()->toArray();
-
+         
         $this->showAnswersIfRequired();
     }
 }

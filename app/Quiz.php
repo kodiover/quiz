@@ -31,8 +31,7 @@ class Quiz extends Model
     public function scopeWithFreshSession($query)
     {
         return $query->addSelect([     
-            'fresh_quiz_session_id' => QuizSession::select('id')  // 'key' is in QuizSession('id') where column 'quiz_id'
-                ->whereColumn('quiz_id', 'id')->fresh()->limit(1) //  links to 'id'
+            'fresh_quiz_session_id' => QuizSession::select('id')->whereNull('started_at')->whereNull('ended_at')
         ])->with('freshSession');
     }
 

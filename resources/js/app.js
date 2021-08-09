@@ -1,4 +1,3 @@
-require('./bootstrap');
 import Echo from 'laravel-echo';
 
 window.pusher = require('pusher-js');

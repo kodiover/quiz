@@ -1,1 +1,0 @@
-<button class="dropdown-item" wire:click="logout">{{ __('Logout') }}</button>
