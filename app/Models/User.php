@@ -60,7 +60,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function user()
+    public function quiz()
     {
         return $this->hasMany(Quiz::class, 'user_id');
     }

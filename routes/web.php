@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\QuizSession;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['guest']], function() {
-    Route::get('/', \App\Http\Livewire\Index::class)->name('home');
-    
-    // Route::post('/quiz/{quizSession}', function (Quiz $quiz) {
-    //     return redirect()->route('user.quiz', $quiz);
-    // })->name('quiz');
-
-    Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class)->name('quiz.start');
+    Route::get('/', \App\Http\Livewire\Index::class)->name('index');
+    Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class)->name('quiz.enter');
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\PlayQuiz::class)->name('quiz.play');
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
-    Route::get('/home', \App\Http\Livewire\User\Home::class)->name('user.home');
-    Route::get('/manage/quizzes/{quiz}', \App\Http\Livewire\User\ManageQuiz::class);
-    Route::get('/quiz/{quizSession}', \App\Http\Livewire\User\Quiz::class)->name('user.quiz');
+    Route::get('/home', \App\Http\Livewire\User\Home::class)->name('home');
+    Route::get('/manage/quizzes/{quiz}', \App\Http\Livewire\User\ManageQuiz::class)->name('user.manage-quiz');
+    Route::get('/quiz/{quizSession}', \App\Http\Livewire\User\Quiz::class)->name('user.quiz.start');
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\User\PlayQuiz::class)->name('user.quiz.play');
     Route::get('/quiz/{quizSession}/leaderboard', \App\Http\Livewire\User\QuizLeaderboard::class)->name('user.quiz.leaderboard');
 
@@ -39,7 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
                 return redirect()->route('user.quiz.leaderboard', $quizSession);
             }
 
-            return redirect()->route('user.quiz.play', $quizSession);
+            return redirect(route('user.quiz.play', $quizSession));
         })->name('user.quiz.next');
 });
 

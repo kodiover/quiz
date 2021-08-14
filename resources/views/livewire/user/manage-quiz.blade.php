@@ -1,3 +1,4 @@
+
 <div class="max-w-screen-md px-4 mx-auto relative x9oAws">
     <h2 class="text-3xl text-center text-white text-title italic">{{ $quiz->title }}</h2>
     <p class="flex items-center text-black justify-center font-bold mb-8">
@@ -16,7 +17,7 @@
         </summary>
         <div class="ml-2 border-l pl-4 pt-4">
             @foreach ($quiz->sessions->filter->isStale() as $session)
-                <div class="mb-4 bg-black rounded p-3 text-white">
+                <div class="mb-4 bg-black rounded p-3">
                     <p>
                         <strong>{{ $session->players->where('score', $session->players->max('score'))->first()->nickname }}</strong>
                         won
@@ -29,7 +30,7 @@
 
     {{-- Questions --}}
     <details class="mt-1">
-        <summary class="cursor-pointer font-bold italic px-2 py-1 bg-black rounded">
+        <summary class="cursor-pointer font-bold italic px-2 py-1 bg-blue rounded">
             <div class="inline-flex items-center">
                 Questions
                 <span class="ml-4 text-xs bg-red-600 border-white rounded-full p-1 leading-none">{{ $quiz->questions->count() }}</span>
@@ -42,13 +43,13 @@
                     <strong class="float-left mr-2">{{ $index + 1 }}.</strong>
                     {!! $question->text !!}
                 </p>
-                <p class="mb-4 text-white text-right font-bold italic">
+                <p class="mb-4 text-white font-bold italic">
                     Time Limit: {{ $question->time_limit }}s
                 </p>
                 <div class="flex flex-wrap -m-1">
                     @foreach ($question->options as $key => $option)
                         <div class="w-1/2 p-1">
-                            <div class="bg-gray-200 rounded border px-3 py-1">
+                            <div class="bg-gray-200 rounded border border-blue-200 px-3 py-1">
                                 <strong class="float-left mr-2">{{$key}})</strong>
                                 {{ $option }}
                             </div>
@@ -56,9 +57,9 @@
                     @endforeach
                 </div>
                 <div class="flex mt-2 items-baseline">
-                    <button class="bg-blue-700 text-black hover:bg-blue-600 font-bold text-sm px-2 py-1 rounded"
+                    <x-jet-button class="bg-blue-700 text-black hover:bg-blue-600 font-bold text-sm px-2 py-1 rounded"
                         @click="showAnswer = !showAnswer"
-                        x-text="showAnswer ? 'Hide Answer' : 'Show Answer'"></button>
+                        x-text="showAnswer ? 'Hide Answer' : 'Show Answer'"></x-jet-button>
                     <template x-if.fade="showAnswer">
                         <p class="ml-4 mt-2 italic text-white text-left">
                             <strong class="mr-2">{{ $question->correct_key }})</strong>
@@ -75,8 +76,8 @@
     <div class="bottom-0 ml-12 mt-12 z-10 text-right"
         x-data="{ creating: false }"
         x-init="window.livewire.on('closeModal', () => creating = false)">
-        <div class="bottom-0 ml-12 mt-12 z-10 text-right plus">
-            <button class="px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition" @click="creating = true">
+        <div class="inherit text-right mt-3">
+            <button class="px-4 py-2 bg-gray-800 border border-transparent rounded-md border-gray-300 rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-600 active:bg-gray-900 focus:outline-none focus:border-gray-900  disabled:opacity-25 transition" @click="creating = true">
                 <svg class="h-6" viewBox="0 0 20 20" stroke-width="2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="2" y1="10" x2="18" y2="10"></line>
                     <line x1="10" y1="2" x2="10" y2="18"></line>

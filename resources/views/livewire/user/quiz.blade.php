@@ -1,5 +1,5 @@
 
-    <div class="flex flex-col bg-lightseagreen text-white justify-center items-center min-h-screen">
+    <div class="flex flex-col bg-black text-white justify-center items-center min-h-screen py-8">
         <div class="max-w-md mx-auto text-center p-4">
             <h2 class="text-xl font-bold">Game Pin</h2>
             <p class="text-5xl font-bold">{{ $session->pin }}</p>
@@ -13,9 +13,9 @@
         </div>
         <p class="py-6 mb-5">Waiting for players...</p>
         <div class="my-6 text-center">
-            <button wire:click="start"
-                class="px-4 py-2 font-bold bg-blue-700 hover:bg-blue-600 text-black rounded text-xl">
+            <x-jet-button wire:click="start"
+                class="px-4 py-2 font-bold text-black border-gray-300 rounded text-xl">
                 Ready!
-            </button>
+            </x-jet-button>
         </div>
     </div>

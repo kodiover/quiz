@@ -6,7 +6,6 @@ use App\Events\PlayerJoined;
 use App\Models\PlayerSession;
 use App\Models\QuizSession;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,18 +14,12 @@ class Index extends Component
     public $nickname = '';
     public $enteredSession = null;
 
-    public function rules()
-    {
-        return [
-            'pin' => 'required|min:6|exists:quiz_sessions,pin',
-            'nickname' => ['required|max:100|', Rule::unique('quiz_players', 'nickname')
-                        ->where('quiz_session_id', $this->enteredSession->id)],
-        ];
-    }
+   
 
     public function render()
     {
-        return view('index');
+        // $user_type = Auth::user()->user_type;
+        return view('livewire.index');
     }
 
     public function enter()
@@ -35,11 +28,10 @@ class Index extends Component
             'pin' => ['required', 'numeric', 'digits:6', 'exists:quiz_sessions,pin']
         ]);
 
-        
         $this->enteredSession = QuizSession::with('quiz')->where('pin', $this->pin)->first();
+
         PlayerSession::id($this->enteredSession->id);
-        $this->validate();
-        }
+    }
 
     public function ready()
     {
@@ -51,15 +43,13 @@ class Index extends Component
             ]
         ]);
 
-        $this->enteredSession = QuizSession::with('quiz')->where('nickname', $this->nickname)->first();
+        // $this->enteredSession = QuizSession::with('quiz')->where('nickname', $this->nickname)->first();
 
         $player = $this->enteredSession->joinAs($this->nickname);
 
         event(new PlayerJoined($player, $this->enteredSession));
 
-        $this->validate();
-
-        return redirect(route('quiz.start', $this->enteredSession));
+        return redirect(route('quiz.enter', $this->enteredSession));
     }
 
     public function mount()
@@ -74,7 +64,7 @@ class Index extends Component
             $this->nickname = $nickname;
             $this->enteredSession->joinAs($nickname);
 
-            return redirect(route('quiz.start', $this->enteredSession));
+            return redirect(route('quiz.enter', $this->enteredSession));
         }
     }
 }

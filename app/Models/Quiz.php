@@ -30,9 +30,8 @@ class Quiz extends Model
     // SQL statement to define the scope of fresh session
     public function scopeWithFreshSession($query)
     {
-        return $query->addSelect([     
-            'fresh_quiz_session_id' => QuizSession::select('id')  // 'key' is in QuizSession('id') where column 'quiz_id'
-                ->whereColumn('quiz_id', 'id')->fresh()->limit(1) //  links to 'id'
+        return $query->addSelect([     // Checks for session where 'quiz_id' and 'id' are the same and limits to 1 value
+            'fresh_quiz_session_id' => QuizSession::select('id')->whereColumn('quiz_id', 'id')->fresh()->limit(1)
         ])->with('freshSession');
     }
 
@@ -42,9 +41,9 @@ class Quiz extends Model
         return $this->hasMany(Question::class, 'quiz_id');
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
 }
