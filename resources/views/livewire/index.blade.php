@@ -1,8 +1,6 @@
-
 <x-slot name="logo">
     <x-jet-authentication-card-logo />
 </x-slot>
-
 
 <div class="h-screen flex flex-col justify-center items-center index-page">
     @if($enteredSession)

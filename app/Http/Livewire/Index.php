@@ -18,7 +18,6 @@ class Index extends Component
 
     public function render()
     {
-        // $user_type = Auth::user()->user_type;
         return view('livewire.index');
     }
 
@@ -49,7 +48,9 @@ class Index extends Component
 
         event(new PlayerJoined($player, $this->enteredSession));
 
-        return redirect(route('quiz.enter', $this->enteredSession));
+        $this->emit('refresh-quiz-page');
+
+        return redirect(route('quiz.start', $this->enteredSession));
     }
 
     public function mount()
@@ -64,7 +65,7 @@ class Index extends Component
             $this->nickname = $nickname;
             $this->enteredSession->joinAs($nickname);
 
-            return redirect(route('quiz.enter', $this->enteredSession));
+            return redirect()->route('quiz.start', $this->enteredSession);
         }
     }
 }

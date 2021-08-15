@@ -1,4 +1,3 @@
-
 <div class="add-question">
     <h4 class="text-2xl text-left font-bold mb-4 text-white">Add Question</h4>
     <form wire:submit.prevent="create">

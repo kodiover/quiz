@@ -1,4 +1,3 @@
-
 <div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none bg-gray-300"
     x-data="{ creating: false }"
     x-init="window.livewire.on('creatingStatus', status => creating = status)">
@@ -24,7 +23,7 @@
                         Resume
                     </x-jet-button>
 
-                    <x-jet-button wire:click="abandonAndStartNewSession({{ $quiz->id }})"
+                    <x-jet-button wire:click="abandonAndStartNewSession({{ $quiz->id }}, {{ $quiz->freshSession->id }})"
                         class="ml-2 px-2 py-1 text-sm rounded font-bold">
                         Abandon and Start New
                     </x-jet-button>
@@ -44,7 +43,7 @@
             </p>
         </div>
         @empty
-            <p class="text-white text-center">No quizzes created.</p>
+            <p class="text-white mt-5 text-center">No quizzes created.</p>
         @endforelse
     <div class="inherit text-right">
         <x-jet-button class="px-4 py-2 border-gray-300" @click="creating = true">
