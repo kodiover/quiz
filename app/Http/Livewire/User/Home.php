@@ -45,28 +45,22 @@ class Home extends Component
 
     public function startSession($quizId)
     {        
-        if (isset($this->quizzes)){
-            foreach ($this->quizzes as $key => $value){
-                $quiz = $this->quizzes[$key];
-            }
-        }
-
         $quiz = Quiz::where('id', $quizId)->first();
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect(route('user.quiz.start', $session));
+        return redirect(route('user.quiz', $session));
     }
 
-    public function abandonAndStartNewSession($quizId, $sessionId)
+    public function abandonAndStartNewSession($quizId)
     {
-        QuizSession::where('id', $sessionId)->where('quiz_id', $quizId)->delete();
+        QuizSession::where('quiz_id', $quizId)->latest('id')->delete();
 
         $quiz = $this->quizzes[$quizId];
 
         $session = $quiz->startSession(rand(pow(10, 5), pow(10, 6) - 1));
 
-        return redirect(route('user.quiz.start', $session));
+        return redirect(route('user.quiz', $session));
     }
 
 
@@ -74,12 +68,12 @@ class Home extends Component
     {
         QuizSession::where('id', $sessionId)->delete();
 
-        return redirect(route('home'));
+        return redirect(route('user.home'));
     }
 
     public function resumeSession($sessionId)
     {
-        return redirect(route('user.quiz.start', $sessionId));
+        return redirect(route('user.quiz', $sessionId));
     }
 
     public function mount()

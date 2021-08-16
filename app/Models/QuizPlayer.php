@@ -15,7 +15,7 @@ class QuizPlayer extends Model
 
     public function session()
     {
-        return $this->belongsTo(QuizSession::class, 'quiz_session_id');
+        return $this->belongsTo(QuizSession::class);
     }
 
     public function respond($question, $key)

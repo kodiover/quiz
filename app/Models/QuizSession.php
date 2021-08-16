@@ -43,7 +43,7 @@ class QuizSession extends Model
 
     public function players()
     {
-        return $this->hasMany(QuizPlayer::class);
+        return $this->hasMany(QuizPlayer::class, 'quiz_session_id');
     }
 
     public function quiz()

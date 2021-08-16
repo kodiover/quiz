@@ -864,7 +864,7 @@ select {
 	content: close-quote;
 }
 .prose h1 {
-	color: #374151;
+	color: #111827;
 	font-weight: 800;
 	font-size: 2.25em;
 	margin-top: 0;
@@ -1506,9 +1506,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgb(14, 131, 170);
 }
-.bg-blue-600 {
-	background-color: #002558;
-}
 .bg-black {
 	background-color: #181a1b;
 }
@@ -1576,9 +1573,6 @@ select {
 }
 .p-3 {
 	padding: 0.75rem;
-}
-.p-4 {
-	padding: 1rem;
 }
 .p-6 {
 	padding: 1.5rem;
@@ -1719,9 +1713,6 @@ select {
 .text-3xl {
 	font-size: 1.875rem;
 }
-.text-4xl {
-	font-size: 2.25rem;
-}
 .text-5xl {
 	font-size: 3rem;
 }
@@ -1763,7 +1754,8 @@ select {
 	color: #b9b3ab;
 }
 .text-gray-600 {
-	color: #807b75;
+	--tw-text-opacity: 1;
+	color: rgb(177, 170, 160);
 }
 .text-white {
 	--tw-text-opacity: 1;
@@ -1933,7 +1925,7 @@ select {
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 .hover\:text-gray-500:hover {
-	color: rgb(177, 170, 160);
+	color: #807b75;
 }
 .hover\:text-gray-400:hover {
 	--tw-text-opacity: 1;

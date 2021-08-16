@@ -2,10 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\QuizSession;
-use App\Policies\QuizSessionPolicy;
-use App\Providers\ConfigUserProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -17,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        QuizSession::class => QuizSessionPolicy::class
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -29,8 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::provider('config', function($app, array $config) {
-            return new ConfigUserProvider($config['password'] ?? null, $config['name'] ?? null);
-        });
+        //
     }
 }

@@ -38,7 +38,7 @@ class Quiz extends Component
     public function mount(QuizSession $quizSession)
     {
         $this->authorize('view', $quizSession);
-        PlayerSession::clear();
+
         $this->session = $quizSession->load(['quiz']);
 
         if ($this->session->isActive()) {

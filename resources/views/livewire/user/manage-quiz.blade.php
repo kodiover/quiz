@@ -1,3 +1,4 @@
+
 <div class="max-w-screen-md px-4 mx-auto relative x9oAws">
     <h2 class="text-3xl text-center text-white text-title italic">{{ $quiz->title }}</h2>
     <p class="flex items-center text-black justify-center font-bold mb-8">
