@@ -1,4 +1,3 @@
-
 <x-slot name="logo">
     <x-jet-authentication-card-logo />
 </x-slot>
@@ -58,3 +57,11 @@
         @endif
     </div>
 </div>
+
+<!-- <script>
+    function refresh(){
+        setInterval(function(){
+            Livewire.emit('refreshPage');
+        }, 2000);
+    }
+</script> -->

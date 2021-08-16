@@ -43,7 +43,7 @@ class QuizSession extends Model
 
     public function players()
     {
-        return $this->hasMany(QuizPlayer::class, 'quiz_session_id');
+        return $this->hasMany(QuizPlayer::class);
     }
 
     public function quiz()
@@ -67,8 +67,8 @@ class QuizSession extends Model
         
         $question = $this->quiz->questions->get($this->current_question_index, null);
         
-        if (! $question){
-            return;
+        if ($this->current_question_index === null) {
+            return $this->endSession();
         }
 
         $this->next_question_at = now()->addSeconds($question->time_limit + $delayInSeconds);

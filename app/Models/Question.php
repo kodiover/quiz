@@ -36,5 +36,9 @@ class Question extends Model
     public function isCorrect($key)
     {
         return $this->correct_key === $key;
+
+        if ($key === null) {
+            return;
+        }
     }
 }

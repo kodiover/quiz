@@ -1,4 +1,4 @@
-@if(Auth::id())
+@if(Auth::user())
 <nav x-data="{ open: false }" class="bg-black border-b border-gray-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-black">
         <div class="flex justify-between h-16 bg-black">
@@ -132,10 +132,10 @@
         <div class="flex auth">
             <!-- Navigation Links -->
             <div class="flex-shrink-0 flex items-center text-gray-600 hover:text-gray-500">
-                <a href="{{ url('login') }}"> Login </a>
+                <a href="{{ route('login') }}"> Login </a>
             </div>
             <div class="ml-2 flex-shrink-0 flex ml-2 items-center text-gray-600 hover:text-gray-500">
-                <a href="{{ url('register') }}"> Register </a>
+                <a href="{{ route('register') }}"> Register </a>
             </div>
         
         </div>

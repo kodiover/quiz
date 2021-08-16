@@ -48,7 +48,6 @@ class Index extends Component
         $player = $this->enteredSession->joinAs($this->nickname);
 
         event(new PlayerJoined($player, $this->enteredSession));
-
         return redirect(route('quiz.enter', $this->enteredSession));
     }
 

@@ -17,6 +17,7 @@ class PlayQuiz extends Component
     public $question;
     public $response;
     public $player;
+    public $noReponse = false;
     public $showAnswer = false;
     public $ended = false;
 
@@ -34,7 +35,6 @@ class PlayQuiz extends Component
     public function render()
     {
         return view('livewire.play-quiz');
-
     }
 
     public function reload($data)
@@ -56,17 +56,9 @@ class PlayQuiz extends Component
         $this->showAnswer = true;
     }
 
-    public function end()
+    public function endQuiz()
     {
-        foreach($this->question as $key => $option){
-            if (!$this->player->respond($this->question->last(), $key)){
-                $this->ended = true;
-            }else $this->ended = true;
-        }
-        if ($this->ended){
-            PlayerSession::clear();
-            return $this->session->endSession;
-        }
+        PlayerSession::clear();
     }
 
     public function mount(QuizSession $quizSession)
@@ -82,9 +74,14 @@ class PlayQuiz extends Component
         $this->question = $this->session->quiz->questions
             ->get($this->session->current_question_index, null);
 
+        if ( !$this->session->currentQuestion()){
+            $this->ended = true;
+        }
+
         $this->response = $this->player->responses()
             ->where('question_id', $this->question->id)
             ->first();
+
         if ($this->response && $this->response->score !== null) {
             $this->showAnswer();
         }

@@ -40,7 +40,7 @@ class Quiz extends Component
         $this->authorize('view', $quizSession);
 
         $this->session = $quizSession->load(['quiz']);
-
+        
         if ($this->session->isActive()) {
             return $this->redirectToPlay();
         }

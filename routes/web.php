@@ -24,9 +24,9 @@ Route::group(['middleware' => ['guest']], function() {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
     Route::get('/home', \App\Http\Livewire\User\Home::class)->name('home');
     Route::get('/manage/quizzes/{quiz}', \App\Http\Livewire\User\ManageQuiz::class)->name('user.manage-quiz');
-    Route::get('/quiz/{quizSession}', \App\Http\Livewire\User\Quiz::class)->name('user.quiz.start');
-    Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\User\PlayQuiz::class)->name('user.quiz.play');
-    Route::get('/quiz/{quizSession}/leaderboard', \App\Http\Livewire\User\QuizLeaderboard::class)->name('user.quiz.leaderboard');
+    Route::get('/user/quiz/{quizSession}', \App\Http\Livewire\User\Quiz::class)->name('user.quiz.start');
+    Route::get('/user/quiz/{quizSession}/play', \App\Http\Livewire\User\PlayQuiz::class)->name('user.quiz.play');
+    Route::get('/user/quiz/{quizSession}/leaderboard', \App\Http\Livewire\User\QuizLeaderboard::class)->name('user.quiz.leaderboard');
 
         Route::post('/quiz/{quizSession}/next', function (QuizSession $quizSession) {
             $question = $quizSession->nextQuestion($delayInSeconds = 1);

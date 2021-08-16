@@ -4976,7 +4976,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__.default.start();
 window.pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__.default({
   broadcaster: "pusher",
-  key: "26a8b6177f9c1d3ea4b6",
+  key: "my-pusher-app-key",
   wsHost: window.location.hostname,
   wsPort: 6001,
   disableStats: true

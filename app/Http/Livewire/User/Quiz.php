@@ -10,6 +10,9 @@ class Quiz extends Component
 {
     public $session;
 
+    // protected $listeners = ['refreshPage' => '$refresh'];
+
+
     protected function getListeners() {
         return [
             "echo:private-User.Quiz.{$this->session['id']},PlayerJoined" => 'loadPlayers'

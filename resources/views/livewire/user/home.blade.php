@@ -1,7 +1,7 @@
-
 <div class="max-w-screen-md mx-auto flex flex-col min-h-screen leading-none bg-gray-300"
     x-data="{ creating: false }"
-    x-init="window.livewire.on('creatingStatus', status => creating = status)">
+    x-init="window.livewire.on('creatingStatus', status => creating = status)"
+    >
 
     <h2 class="text-center font-bold text-white mt-6 mb-8 text-title">Quizzes</h2>
     @forelse($quizzes as $quiz)
@@ -24,7 +24,7 @@
                         Resume
                     </x-jet-button>
 
-                    <x-jet-button wire:click="abandonAndStartNewSession({{ $quiz->id }})"
+                    <x-jet-button wire:click="abandonAndStartNewSession({{ $quiz->id }}, {{ $quiz->freshSession->id }})"
                         class="ml-2 px-2 py-1 text-sm rounded font-bold">
                         Abandon and Start New
                     </x-jet-button>
@@ -63,7 +63,7 @@
         <div @click.away="creating = false"
             class="max-w-full bg-black text-gray-900 p-6 rounded shadow">
             <h4 class="text-white text-center">Create Quiz</h4>
-            <form wire:transition.fade wire:submit.prevent="createQuiz" wire:key="create-quiz"  class="text-center form-center">
+            <form wire:transition.fade wire:submit.prevent="createQuiz" wire:key="create-quiz" class="text-center form-center">
                 <!-- @csrf -->
                 <div class="text-xl text-black container2">
                     <x-jet-input id="title" class="box-mod"
