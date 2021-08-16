@@ -1,7 +1,7 @@
 @php($bgColors = ['bg-blue-400 text-white', 'bg-red-500 text-white', 'bg-green-400 text-white', 'bg-yellow-400 text-black'])
 @php($shapes = ['triangle', 'hexagon', 'circle', 'star'])
 <div class="container-w mx-auto flex flex-col min-h-screen relative">
-    <h2 class="text-2xl font-bold text-center my-8">{{$session->quiz->title}}</h2>
+    <h2 class="text-2xl font-bold text-center my-8 text-white">{{$session->quiz->title}}</h2>
     @if (! $showAnswers)
     <div class="absolute top-0 right-0 mt-4">
         @component('components.countdown', [
@@ -9,11 +9,11 @@
             'timeup' => 'timeUp()'
         ])
         <div class="absolute top-0 right-0 mt-6 mr-6">
-            <p class="text-3xl font-bold italic" x-text="timeLeft"></p>
+            <p class="text-3xl font-bold italic text-white" x-text="timeLeft"></p>
         </div>
         @endcomponent
     </div>
-    <p class="p-6 rounded bg-blue-600 text-2xl font-mono font-bold tracking-wide mb-8">{{ $question->text }}</p>
+    <p class="p-6 rounded bg-blue-600 text-2xl text-white font-mono font-bold tracking-wide mb-8">{{ $question->text }}</p>
     <div class="w-full flex-1 grid grid-cols-2 gap-8 content-start">
         @foreach($question->options as $option)
         <div
@@ -44,6 +44,6 @@
 </div>
 <script>    
     function timeUp() {
-        // $this.call('showAnswersIfRequired');
+        $this.call('showAnswersIfRequired');
     }
 </script>

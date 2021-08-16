@@ -18,3 +18,9 @@
     </div>
     <p class="py-6 mb-5">Waiting for players...</p>
 </div>
+
+<!-- <script>
+    setTimeout(function(){
+        window.location.reload();
+    }, 3000);
+</script> -->

@@ -17,7 +17,6 @@ class PlayQuiz extends Component
     public $question;
     public $response;
     public $player;
-    public $noReponse = false;
     public $showAnswer = false;
     public $ended = false;
 

@@ -10,13 +10,18 @@ class Quiz extends Component
 {
     public $session;
 
-    // protected $listeners = ['refreshPage' => '$refresh'];
+    protected $listeners = ['refreshPage' => 'refresh'];
 
 
     protected function getListeners() {
         return [
             "echo:private-User.Quiz.{$this->session['id']},PlayerJoined" => 'loadPlayers'
         ];
+    }
+
+    public function refresh()
+    {
+        dd('hii#');
     }
 
     public function render()
@@ -41,6 +46,8 @@ class Quiz extends Component
     public function mount(QuizSession $quizSession)
     {
         $this->session = $quizSession;
+
+        
 
         if ($this->session->isActive()) {
             return redirect(route('user.quiz.play', $this->session));

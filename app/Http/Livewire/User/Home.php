@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\User;
 use App\Models\Quiz;
-use App\Models\QuizSession;
 use Livewire\Component;
-use Auth;
+use App\Models\QuizSession;
+use Illuminate\Support\Facades\Auth;
 
 class Home extends Component
 {
@@ -18,7 +19,6 @@ class Home extends Component
         return view('livewire.user.home');
     }
 
-
     public function createQuiz()
     {
         $this->validate([
@@ -29,19 +29,27 @@ class Home extends Component
 
         $quiz = Quiz::create(['title' => $this->quizTitle,'user_id' => $user_id]);
 
-        $this->quizTitle = '';
-
         $this->quizzes->put($quiz->id, $quiz);
+
+        $this->quizTitle = '';
 
         $this->emit('creatingStatus', false);
     }
 
     public function deleteQuiz($quizId)
     {
+        // foreach ($this->quizzes as $object){
+
+        //     $quizzes[] = (array) $object;
+
+        //     $key = array_search($quiz, $quizzes);
+        //     unset($this->quizzes[$key]);
+
+        //     $this->quizzes = array_values(array($this->quizzes));
+        // }
+
         unset($this->quizzes[$quizId-1]);
-
         Quiz::where('id', $quizId)->delete();
-
         return redirect(route('home'));
     }
 
@@ -70,7 +78,6 @@ class Home extends Component
 
         return redirect(route('user.quiz.start', $session));
     }
-
 
     public function discardSession($sessionId)
     {

@@ -9,6 +9,7 @@
                     $dispatch('timeup');
                 }
             }, 100/3)
+
         }" @timeup="{{ $timeup ?? 'console.log(\'timeup!\')' }}">
     {{ $slot }}
 </div>

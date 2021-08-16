@@ -1,5 +1,5 @@
 <div class="h-screen relative text-white flex flex-col items-center justify-center p-4
-{{ ! $showAnswer ? 'bg-blue-500' : ($response && $question->isCorrect($response->response) ? 'bg-green-500' : 'bg-red-500') }}">
+{{ ! $showAnswer ? 'bg-blue-600' : ($response && $question->isCorrect($response->response) ? 'bg-green-500' : 'bg-red-500') }}">
     @if ($ended)
         <div class="absolute top-0 right-0 mt-6 mr-6">
             <p class="font-bold text-3xl italic">{{ $player->score }}</p>

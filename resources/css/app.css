@@ -1,7 +1,3 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
 @import 'reboot.css';
 @import 'custom-properties.css';
 @import 'components.css';

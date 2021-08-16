@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest']], function() {
     Route::get('/', \App\Http\Livewire\Index::class)->name('index');
-    Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class)->name('quiz.enter');
+    Route::get('/quiz/{quizSession}', \App\Http\Livewire\Quiz::class)->name('quiz.start');
     Route::get('/quiz/{quizSession}/play', \App\Http\Livewire\PlayQuiz::class)->name('quiz.play');
 });
 

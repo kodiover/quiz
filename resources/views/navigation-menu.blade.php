@@ -30,7 +30,7 @@
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-black hover:text-gray-500 focus:outline-none transition ease-in-out duration-150">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-black hover:text-gray-600 focus:outline-none transition ease-in-out duration-150">
                                         {{ Auth::user()->name }}
 
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -131,10 +131,10 @@
     <div class="flex justify-between h-16">
         <div class="flex auth">
             <!-- Navigation Links -->
-            <div class="flex-shrink-0 flex items-center text-gray-600 hover:text-gray-500">
+            <div class="flex-shrink-0 flex items-center text-gray-500 hover:text-gray-600">
                 <a href="{{ route('login') }}"> Login </a>
             </div>
-            <div class="ml-2 flex-shrink-0 flex ml-2 items-center text-gray-600 hover:text-gray-500">
+            <div class="ml-2 flex-shrink-0 flex ml-2 items-center text-gray-500 hover:text-gray-600">
                 <a href="{{ route('register') }}"> Register </a>
             </div>
         

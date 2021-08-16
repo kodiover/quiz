@@ -57,7 +57,7 @@
             <p class="text-red-600 mt-2">{{ $message }}</p>
         @enderror
         <div class="text-left" wire:key="submit-button">
-            <x-jet-button class="ml-2 px-2 py-1 mt-4 text-sm rounded bg-blue-600 hover:bg-blue-500 text-white font-bold">Create</x-jet-button>
+            <x-jet-button class="ml-2 px-2 py-1 mt-4 text-sm rounded bg-blue-600 hover:bg-gray-600 text-white font-bold">Create</x-jet-button>
         </div>
     </form>
 </div>
