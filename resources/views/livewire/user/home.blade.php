@@ -3,25 +3,26 @@
     x-init="window.livewire.on('creatingStatus', status => creating = status)">
 
     <h2 class="text-center font-bold text-white mt-6 mb-8 text-title">Quizzes</h2>
-    @if (!$quizzes)
+    @if(! $quizzes)
         <p class="text-white text-center">No quizzes created.</p>
     @else
-        @foreach($quizzes as $quiz)
+        @foreach($quizzes as $index => $quiz)
             <div class="w-full bg-black text-white py-3 px-6 rounded border border-gray-300 relative mb-4">
-                <h3 class="text-lg font-bold hover:underline pr-12">
-                    <a href="{{ route('user.manage-quiz', $quiz->id) }}">{{ $quiz->title }}</a>
-
+                <h3 class="text-lg font-bold hover:underline hover:text-blue-600 max-width">
+                    <a href="{{ route('user.manage-quiz', $quiz->id) }}">{{$quiz->title}}</a>
                 </h3>
                 <p class="mt-2">
-                    @if(!$quiz->freshSession)
-
+                    @if(! $quiz->freshSession)
                         <x-jet-button wire:click="startSession({{ $quiz->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Start
                         </x-jet-button>
-                    
-                    @else
 
+                        <x-jet-button wire:click="deleteQuiz({{ $quiz->id }}, {{ $loop->index }})"
+                            class="ml-2 px-2 py-1 text-sm rounded font-bold">
+                            Delete
+                        </x-jet-button>
+                    @else
                         <x-jet-button wire:click="resumeSession({{ $quiz->freshSession->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Resume
@@ -31,19 +32,17 @@
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Abandon and Start New
                         </x-jet-button>
-                        
+
                         <x-jet-button wire:click="discardSession({{ $quiz->freshSession->id }})"
                             class="ml-2 px-2 py-1 text-sm rounded font-bold">
                             Discard Session
                         </x-jet-button>
 
-                    
+                        <x-jet-button wire:click="deleteQuiz({{ $quiz->id }})"
+                            class="ml-2 px-2 py-1 text-sm rounded font-bold">
+                            Delete
+                        </x-jet-button>
                     @endif
-
-                    <x-jet-button wire:click="deleteQuiz({{ $quiz->id }})"
-                        class="ml-2 px-2 py-1 text-sm rounded font-bold">
-                        Delete
-                    </x-jet-button>
                 </p>
             </div>
         @endforeach
@@ -66,8 +65,7 @@
         <div @click.away="creating = false"
             class="max-w-full bg-black text-gray-900 p-6 rounded shadow">
             <h4 class="text-white text-center">Create Quiz</h4>
-            <form wire:submit.prevent="createQuiz"  class="text-center form-center">
-                <!-- @csrf -->
+            <form wire:submit.prevent="createQuiz" class="text-center form-center">
                 <div class="text-xl text-black container2">
                     <x-jet-input id="title" class="box-mod"
                             type="text"
@@ -75,8 +73,7 @@
                             autocomplete="off"
                             autofocus
                             wire:model="quizTitle"/>
-                </div>
-            
+                </div>            
                 <div class="text-xl mt-4 mb-4">
                     <x-jet-button type="submit" class="btn-submit mb-15">
                     Create

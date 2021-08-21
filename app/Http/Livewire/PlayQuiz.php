@@ -17,7 +17,9 @@ class PlayQuiz extends Component
     public $question;
     public $response;
     public $player;
+    public $timeLeft = 0;
     public $showAnswer = false;
+    public $noResponse = false;
     public $ended = false;
 
     public function getListeners()
@@ -41,7 +43,13 @@ class PlayQuiz extends Component
         $this->redirect(route('quiz.play', $this->session));
     }
 
+    public function end()
+    {
+        PlayerSession::clear();
 
+        $this->redirect(route('index'));
+    }
+    
     public function storeAnswer($answerKey)
     {
         $this->response = $this->player->respond($this->question, $answerKey);
@@ -52,12 +60,33 @@ class PlayQuiz extends Component
     public function showAnswer()
     {
         $this->response = optional($this->response)->fresh();
+
         $this->showAnswer = true;
     }
 
-    public function endQuiz()
+    public function checkForAnswers()
     {
-        PlayerSession::clear();
+        if ($this->timeLimitElapsed()) {
+            return true;
+        }
+        return;
+    }
+
+    public function timeLimitElapsed()
+    {
+        $this->calculateTimeLeft();
+
+        return $this->timeLeft <= 0;
+    }
+
+    public function calculateTimeLeft()
+    {
+        $this->timeLeft = now()->diffInSeconds($this->session->next_question_at, false);
+
+        if ($this->timeLeft <= 0) {
+
+            $this->timeLeft = 0;
+        }
     }
 
     public function mount(QuizSession $quizSession)
@@ -72,14 +101,21 @@ class PlayQuiz extends Component
 
         $this->question = $this->session->quiz->questions
             ->get($this->session->current_question_index, null);
-
-        if ( !$this->session->currentQuestion()){
+        
+        if (isset($this->question)) {
+            $this->response = $this->player->responses()
+                ->where('question_id', $this->question->id)
+                ->first();
+        } else {
             $this->ended = true;
+            $this->session->endSession();
         }
 
-        $this->response = $this->player->responses()
-            ->where('question_id', $this->question->id)
-            ->first();
+        if ($this->timeLimitElapsed() && $this->response === null) {
+            $this->noResponse = true;
+        }
+
+        $this->checkForAnswers();
 
         if ($this->response && $this->response->score !== null) {
             $this->showAnswer();

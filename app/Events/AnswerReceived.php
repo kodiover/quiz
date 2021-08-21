@@ -40,6 +40,8 @@ class AnswerReceived implements ShouldBroadcast
 
     public function broadcastWith()
     {
-        return $this->response->toArray();
+        return [
+            'response' => $this->response
+        ];
     }
 }

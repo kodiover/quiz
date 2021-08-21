@@ -2,22 +2,34 @@
 
 namespace BeyondCode\LaravelWebSockets\HttpApi\Controllers;
 
-use Exception;
-use Illuminate\Http\Request;
-use GuzzleHttp\Psr7\Response;
-use Ratchet\ConnectionInterface;
-use Illuminate\Http\JsonResponse;
-use GuzzleHttp\Psr7\ServerRequest;
-use Ratchet\Http\HttpServerInterface;
-use Psr\Http\Message\RequestInterface;
 use BeyondCode\LaravelWebSockets\Apps\App;
 use BeyondCode\LaravelWebSockets\QueryParameters;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 use BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager;
+use Exception;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\ServerRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Psr\Http\Message\RequestInterface;
+use Pusher\Pusher;
+use Ratchet\ConnectionInterface;
+use Ratchet\Http\HttpServerInterface;
+use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 abstract class Controller implements HttpServerInterface
 {
+    /** @var string */
+    protected $requestBuffer = '';
+
+    /** @var RequestInterface */
+    protected $request;
+
+    /** @var int */
+    protected $contentLength;
+
     /** @var \BeyondCode\LaravelWebSockets\WebSockets\Channels\ChannelManager */
     protected $channelManager;
 
@@ -28,28 +40,51 @@ abstract class Controller implements HttpServerInterface
 
     public function onOpen(ConnectionInterface $connection, RequestInterface $request = null)
     {
-        $serverRequest = (new ServerRequest(
-            $request->getMethod(),
-            $request->getUri(),
-            $request->getHeaders(),
-            $request->getBody(),
-            $request->getProtocolVersion()
-        ))->withQueryParams(QueryParameters::create($request)->all());
+        $this->request = $request;
 
-        $laravelRequest = Request::createFromBase((new HttpFoundationFactory)->createRequest($serverRequest));
+        $this->contentLength = $this->findContentLength($request->getHeaders());
 
-        $this
-            ->ensureValidAppId($laravelRequest->appId)
-            ->ensureValidSignature($laravelRequest);
+        $this->requestBuffer = (string) $request->getBody();
 
-        $response = $this($laravelRequest);
+        $this->checkContentLength($connection);
+    }
 
-        $connection->send(JsonResponse::create($response));
-        $connection->close();
+    protected function findContentLength(array $headers): int
+    {
+        return Collection::make($headers)->first(function ($values, $header) {
+            return strtolower($header) === 'content-length';
+        })[0] ?? 0;
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
+        $this->requestBuffer .= $msg;
+
+        $this->checkContentLength($from);
+    }
+
+    protected function checkContentLength(ConnectionInterface $connection)
+    {
+        if (strlen($this->requestBuffer) === $this->contentLength) {
+            $serverRequest = (new ServerRequest(
+                $this->request->getMethod(),
+                $this->request->getUri(),
+                $this->request->getHeaders(),
+                $this->requestBuffer,
+                $this->request->getProtocolVersion()
+            ))->withQueryParams(QueryParameters::create($this->request)->all());
+
+            $laravelRequest = Request::createFromBase((new HttpFoundationFactory)->createRequest($serverRequest));
+
+            $this
+                ->ensureValidAppId($laravelRequest->appId)
+                ->ensureValidSignature($laravelRequest);
+
+            $response = $this($laravelRequest);
+
+            $connection->send(JsonResponse::create($response));
+            $connection->close();
+        }
     }
 
     public function onClose(ConnectionInterface $connection)
@@ -84,17 +119,20 @@ abstract class Controller implements HttpServerInterface
 
     protected function ensureValidSignature(Request $request)
     {
-        $signature =
-            "{$request->getMethod()}\n/{$request->path()}\n".
-            "auth_key={$request->get('auth_key')}".
-            "&auth_timestamp={$request->get('auth_timestamp')}".
-            "&auth_version={$request->get('auth_version')}";
+        /*
+         * The `auth_signature` & `body_md5` parameters are not included when calculating the `auth_signature` value.
+         *
+         * The `appId`, `appKey` & `channelName` parameters are actually route paramaters and are never supplied by the client.
+         */
+        $params = Arr::except($request->query(), ['auth_signature', 'body_md5', 'appId', 'appKey', 'channelName']);
 
         if ($request->getContent() !== '') {
-            $bodyMd5 = md5($request->getContent());
-
-            $signature .= "&body_md5={$bodyMd5}";
+            $params['body_md5'] = md5($request->getContent());
         }
+
+        ksort($params);
+
+        $signature = "{$request->getMethod()}\n/{$request->path()}\n".Pusher::array_implode('=', '&', $params);
 
         $authSignature = hash_hmac('sha256', $signature, App::findById($request->get('appId'))->secret);
 

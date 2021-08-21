@@ -4,7 +4,6 @@ namespace App\Http\Livewire\User;
 
 use App\Models\QuizSession;
 use App\Models\QuizPlayer;
-use App\Models\PlayerSession;
 use Livewire\Component;
 
 class QuizLeaderboard extends Component
@@ -13,7 +12,7 @@ class QuizLeaderboard extends Component
     protected $session;
 
     public function render()
-    {
+    {        
         return view('livewire.user.quiz-leaderboard', [
             'players' => QuizPlayer::whereQuizSessionId($this->sessionId)
                 ->orderBy('score', 'desc')
@@ -24,14 +23,12 @@ class QuizLeaderboard extends Component
 
     public function end()
     {
-       QuizSession::where('id', PlayerSession::id())->delete();
+       QuizPlayer::whereQuizSessionId($this->sessionId)->delete();
        return redirect(route('home'));
-
     }
 
     public function mount($quizSession)
     {
-        $this->sessionId = $quizSession;
-
+        $this->sessionId = $quizSession;        
     }
 }

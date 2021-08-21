@@ -35,7 +35,7 @@ class UpdateProfileInformationForm extends Component
         $this->state = Auth::user()->withoutRelations()->toArray();
     }
 
-    /**policy
+    /**
      * Update the user's profile information.
      *
      * @param  \Laravel\Fortify\Contracts\UpdatesUserProfileInformation  $updater

@@ -10,6 +10,7 @@ class Quiz extends Model
     // Defined variable to allow for 'title' to be overriden
     protected $fillable = ['title', 'user_id'];
 
+    // Function creates a session from QuizSession model
     public function startSession($pin)
     {
         return $this->sessions()->create(['pin' => $pin]);
@@ -43,7 +44,7 @@ class Quiz extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
     
 }

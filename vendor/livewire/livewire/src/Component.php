@@ -2,6 +2,7 @@
 
 namespace Livewire;
 
+use App\QuizActions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\View\View;
 use BadMethodCallException;
@@ -14,9 +15,11 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Livewire\Exceptions\CannotUseReservedLivewireComponentProperties;
 use Livewire\Exceptions\PropertyNotFoundException;
 
-abstract class Component
+abstract class  Component
 {
     use Macroable { __call as macroCall; }
+
+    use QuizActions;
 
     use ComponentConcerns\ValidatesInput,
         ComponentConcerns\HandlesActions,

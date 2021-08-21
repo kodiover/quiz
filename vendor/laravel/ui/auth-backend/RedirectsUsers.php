@@ -7,7 +7,7 @@ trait RedirectsUsers
     /**
      * Get the post register / login redirect path.
      *
-     * @return stringp
+     * @return string
      */
     public function redirectPath()
     {

@@ -1,7 +1,6 @@
-
-<div class="flex flex-col bg-lightseagreen text-white justify-center items-center min-h-screen">
+<div class="flex flex-col text-white justify-center items-center min-h-screen">
     <div class="max-w-md mx-auto text-center p-4">
-        <h2 class="text-xl font-bold">{{ $session->quiz->title }}</h2>
+        <h2 class="text-xl font-bold">{{ $session->quiz->title}}</h2>
     </div>
     <div class="flex-1 flex flex-col justify-center items-center">
         <h3 class="text-3xl font-bold mb-4">You're in...</h3>

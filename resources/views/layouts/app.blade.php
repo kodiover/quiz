@@ -19,26 +19,22 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>  
+        <!-- <script src="https://js.pusher.com/7.0/pusher-with-encryption.min.js"></script> -->
 
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
 
         <div class="min-h-screen">
-            
-        @if (Request::is('/'))
+
+        @unless(request()->route()->getName() == 'quiz.enter' || request()->route()->getName() == 'quiz.play' || request()->route()->getName() == 'user.quiz.start' || request()->route()->getName() == 'user.quiz.play' || request()->route()->getName() == 'user.quiz.leaderboard')
             @include('navigation-menu')
-        @elseif (Request::is('home'))
-            @include('navigation-menu')
-        @elseif (Request::is('user/profile'))
-            @include('navigation-menu')
-        @elseif (request()->route()->getName() == 'user.manage-quiz')
-            @include('navigation-menu')
-        @endif
+        @endunless
+
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="text-gray-600 border-gray-100">
+                <header class="text-gray-600 bg-black border-gray-100">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <h2 class="font-semibold text-xl text-white leading-tight">
                             {{ $header }}

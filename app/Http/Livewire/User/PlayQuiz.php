@@ -68,6 +68,7 @@ class PlayQuiz extends Component
     public function timeLimitElapsed()
     {
         $this->calculateTimeLeft();
+
         return $this->timeLeft <= 0;
     }
 
@@ -76,6 +77,7 @@ class PlayQuiz extends Component
         $this->timeLeft = now()->diffInSeconds($this->session->next_question_at, false);
 
         if ($this->timeLeft <= 0) {
+
             $this->timeLeft = 0;
         }
     }
@@ -83,9 +85,10 @@ class PlayQuiz extends Component
     public function mount(QuizSession $quizSession)
     {
         $this->session = $quizSession->load(['quiz.questions', 'players']);
-
+        
         if ($quizSession->current_question_index === null || $quizSession->ended_at) {
             $this->question = $quizSession->quiz->questions->last();
+            $this->session->endSession();
             return redirect(route('user.quiz.leaderboard', $quizSession));
         }
 

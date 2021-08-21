@@ -64,13 +64,16 @@ class QuizSession extends Model
     public function nextQuestion($delayInSeconds = 0)
     {
         $this->current_question_index++;
+        
         $question = $this->quiz->questions->get($this->current_question_index, null);
-
-        if ($question) {
-            return $this->endSession();
+        
+        if ($question === null) {
+            $this->update(['current_question_index' => null]);
+            return;
         }
 
         $this->next_question_at = now()->addSeconds($question->time_limit + $delayInSeconds);
+        
         $this->save();
 
         event(new NextQuestion($this, $question));
@@ -82,8 +85,7 @@ class QuizSession extends Model
     {
         $this->update([
             'ended_at' => now(),
-            'current_question_index' => null,
-            'next_question_at' => null
+            'current_question_index' => null
         ]);
         event(new QuizSessionEnded($this));
 

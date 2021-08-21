@@ -53,7 +53,7 @@ class Jetstream
      *
      * @var string
      */
-    // public static $teamModel = 'App\\Models\\Team';
+    public static $teamModel = 'App\\Models\\Team';
 
     /**
      * The membership model that should be used by Jetstream.

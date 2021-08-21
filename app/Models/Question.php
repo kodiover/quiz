@@ -37,8 +37,5 @@ class Question extends Model
     {
         return $this->correct_key === $key;
 
-        if ($key === null) {
-            return;
-        }
     }
 }

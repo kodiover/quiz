@@ -64,3 +64,4 @@ class CustomHandler extends ExceptionHandler
         }
         return redirect()->guest('login');
     }
+}
