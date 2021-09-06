@@ -10,9 +10,9 @@
     {{-- Old Sessions --}}
     <details>
         <summary class="cursor-pointer font-bold italic px-2 py-1 bg-red-600 rounded">
-            <div class="inline-flex items-center text-black">
+            <div class="inline-flex items-center text-white">
                 Stale Sessions
-                <span class="ml-4 text-xs bg-black border-white rounded-full p-1 pr-6 leading-none">{{ $quiz->sessions->count() }}</span>
+                <span class="ml-4 text-xs bg-black border-white rounded-full p-1 pl-5 pr-6 leading-none">{{ $quiz->sessions->count() }}</span>
             </div>
         </summary>
         <div class="ml-2 border-l pl-4 pt-4">
@@ -31,9 +31,9 @@
     {{-- Questions --}}
     <details class="mt-1">
         <summary class="cursor-pointer font-bold italic px-2 py-1 bg-blue rounded">
-            <div class="inline-flex items-center text-black">
+            <div class="inline-flex items-center text-white">
                 Questions
-                <span class="ml-4 text-xs bg-red-600 border-white rounded-full p-1 pr-6 leading-none">{{ $quiz->questions->count() }}</span>
+                <span class="ml-4 text-xs bg-red-600 border-white rounded-full p-1 pl-5 pr-6 leading-none">{{ $quiz->questions->count() }}</span>
             </div>
         </summary>
         <div class="ml-2 border-l pl-4 pt-4">

@@ -4,6 +4,8 @@ namespace App;
 
 trait QuizActions {
 
+    public $reload = false;
+
     /**
      * Gets boolean value once function is called
      * 
@@ -11,6 +13,7 @@ trait QuizActions {
      */
     public function quizState(){
         return true;
+
     }
 
     /**
@@ -23,5 +26,18 @@ trait QuizActions {
             $this->quizState();
         }
         return;
+    }
+
+    /**
+     * Checks if quiz has started
+     * 
+     */
+    public function checkQuizStart($int)
+    {
+        if ($int === 1){
+            $this->reload = true;
+        } else {
+            $this->reload = false;
+        }
     }
 }

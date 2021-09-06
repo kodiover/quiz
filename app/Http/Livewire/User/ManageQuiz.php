@@ -83,7 +83,7 @@ class ManageQuiz extends Component
             'options' => $this->makeKeyedOptions($this->options),
             'correct_key' => $this->keys($this->correctOptionIndex)
         ]);
-
+        
         $this->quiz->questions->push($question);
 
         $this->resetQuestion();

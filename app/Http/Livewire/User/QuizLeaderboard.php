@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class QuizLeaderboard extends Component
 {
-    protected $sessionId;
     protected $session;
+    protected $sessionId;
 
     public function render()
     {        
@@ -23,12 +23,16 @@ class QuizLeaderboard extends Component
 
     public function end()
     {
-       QuizPlayer::whereQuizSessionId($this->sessionId)->delete();
-       return redirect(route('home'));
-    }
+        QuizPlayer::with('sessions')->whereQuizSessionId($this->sessionId)->delete();
 
+        return redirect(route('home'));
+    }
+ 
     public function mount($quizSession)
     {
-        $this->sessionId = $quizSession;        
+        $this->session = QuizSession::where('id', $quizSession);
+        
+        $this->sessionId = $quizSession;
+
     }
 }

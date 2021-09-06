@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Events\QuestionCompleted;
+use Illuminate\Support\Facades\DB;
 use App\Models\QuizSession;
 use Livewire\Component;
 
@@ -86,6 +87,8 @@ class PlayQuiz extends Component
     {
         $this->session = $quizSession->load(['quiz.questions', 'players']);
         
+        DB::table('quiz_sessions')->where('id', $this->session->id)->update(['start_quiz' => false]);
+
         if ($quizSession->current_question_index === null || $quizSession->ended_at) {
             $this->question = $quizSession->quiz->questions->last();
             $this->session->endSession();

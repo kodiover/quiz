@@ -60,12 +60,17 @@
         x-show.fade="creating"
         @keydown.window.escape="creating = false"
         class="fixed z-50 inset-0 flex items-center justify-center p-4"
-        style="background-color: rgba(0, 0, 0, 0.5);">        
+        style="background-color: rgba(0, 0, 0, 0.5);">
+    
+
 
         <div @click.away="creating = false"
             class="max-w-full bg-black text-gray-900 p-6 rounded shadow">
             <h4 class="text-white text-center">Create Quiz</h4>
-            <form wire:submit.prevent="createQuiz" class="text-center form-center">
+            <form wire:submit.prevent="createQuiz" class="text-center form-center"
+            
+
+            >
                 <div class="text-xl text-black container2">
                     <x-jet-input id="title" class="box-mod"
                             type="text"

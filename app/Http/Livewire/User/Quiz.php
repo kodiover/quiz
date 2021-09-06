@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Events\QuizSessionStarted;
+use Illuminate\Support\Facades\DB;
 use App\Models\QuizSession;
 use Livewire\Component;
 
@@ -32,7 +33,7 @@ class Quiz extends Component
 
         event(new QuizSessionStarted($this->session));
         
-        $this->checkEndQuiz(1);
+        // DB::table('quiz_sessions')->where('id', $this->session->id)->update(['start_quiz' => true]);
 
         return redirect()->route('user.quiz.play', $this->session);
         

@@ -18,6 +18,7 @@ class PlayQuiz extends Component
     public $response;
     public $player;
     public $timeLeft = 0;
+    public $nextQuestion = 30;
     public $showAnswer = false;
     public $noResponse = false;
     public $ended = false;
@@ -45,8 +46,6 @@ class PlayQuiz extends Component
 
     public function end()
     {
-        PlayerSession::clear();
-
         $this->redirect(route('index'));
     }
     
@@ -95,6 +94,14 @@ class PlayQuiz extends Component
 
         $this->session = $quizSession->load(['quiz']);
 
+        $this->checkQuizStart(0);
+
+        if ($this->session->next_question) {
+            $this->nextQuestion = 1;
+        } else {
+            $this->nextQuestion = 30;
+        }
+
         $this->player = $quizSession->players()->whereNickname(
             PlayerSession::nickname()
         )->firstOrFail();
@@ -109,12 +116,13 @@ class PlayQuiz extends Component
         } else {
             $this->ended = true;
             $this->session->endSession();
+            PlayerSession::clear();
         }
 
         if ($this->timeLimitElapsed() && $this->response === null) {
             $this->noResponse = true;
         }
-
+        
         $this->checkForAnswers();
 
         if ($this->response && $this->response->score !== null) {

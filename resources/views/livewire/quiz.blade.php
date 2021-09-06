@@ -8,3 +8,11 @@
     </div>
     <p class="py-6">Waiting for players...</p>
 </div>
+
+<div class="none">
+    @component('components.refresh', [
+        'duration', $startQuiz,
+        'refresh', 'refresh()'
+    ])
+    @endcomponent
+</div>

@@ -8,7 +8,7 @@ use App\Events\QuizSessionEnded;
 
 class QuizSession extends Model
 {
-    protected $fillable = ['pin', 'started_at', 'ended_at', 'next_question_at', 'current_question_index'];
+    protected $fillable = ['pin', 'started_at', 'ended_at', 'next_question_at', 'next_question', 'current_question_index'];
 
     protected $casts = [
         'next_question_at' => 'datetime',
@@ -55,7 +55,9 @@ class QuizSession extends Model
     {
         return $this->update([
             'started_at' => now(),
+            'start_quiz' => true,
             'next_question_at' => now()->addSeconds($this->quiz->questions->first()->time_limit + $delayInSeconds),
+            'next_question' => false,
             'pin' => null,
             'current_question_index' => 0,
         ]);
@@ -73,8 +75,12 @@ class QuizSession extends Model
         }
 
         $this->next_question_at = now()->addSeconds($question->time_limit + $delayInSeconds);
-        
+
+        $this->update(['next_question' => true]);
+
         $this->save();
+
+        $this->update(['next_question' => false]);
 
         event(new NextQuestion($this, $question));
 
@@ -84,11 +90,9 @@ class QuizSession extends Model
     public function endSession()
     {
         $this->update([
-            'ended_at' => now(),
-            'current_question_index' => null
+            'ended_at' => now()
         ]);
         event(new QuizSessionEnded($this));
-
     }
 
     public function isActive()

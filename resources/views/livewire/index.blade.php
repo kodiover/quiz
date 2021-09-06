@@ -1,7 +1,7 @@
 <div class="h-screen flex flex-col justify-center items-center index-page">
     <img class="image" src="{{ asset('images/index-page.jpeg') }}">
     @if($enteredSession)
-        <?php 
+        <?php
             echo '<style type="text/css">
                 #nav-bar {
                     display: none;
@@ -17,20 +17,20 @@
                 <div class="text-xl text-white container2">
                     <x-jet-input id="pin" class="box-mod"
                             type="tel"
-                            placeholder="Nickname"                            
+                            placeholder="Nickname"
                             autocomplete="off"
                             autofocus
-                            wire:model.defer="nickname"/> 
+                            wire:model.defer="nickname"/>
                     <div class="text-xl mt-4">
                     <x-jet-button type="submit" class="btn-submit">
                         Ready
                     </x-jet-button>
                 </div>
-            </form>                    
-        </div> 
+            </form>
+        </div>
         @error('nickname')
             <p class="px-4 mt-1 text-sm inherit error bottom-25">{{ $message }}</p>
-        @enderror                   
+        @enderror
     @else
         <div class="max-w-lg mx-auto container ">
             <h2 for="pin" class="text-4xl font-bold text-center text-white py-2 mb-5">Enter Quiz Pin</h2>
@@ -38,7 +38,7 @@
                 <div class="text-xl text-black container2">
                     <x-jet-input id="pin" class="box-mod"
                             type="tel"
-                            placeholder="Game PIN"                            
+                            placeholder="Game PIN"
                             autocomplete="off"
                             autofocus
                             wire:model.defer="pin"/>
@@ -53,5 +53,5 @@
                 <p class="px-4 mt-1 text-sm text-4xl inherit error font-bold bottom-25">{{ $message }}</p>
             @enderror
         </div>
-    @endif    
+    @endif
 </div>

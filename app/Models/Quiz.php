@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Quiz extends Model
 {
-    // Defined variable to allow for 'title' to be overriden
+    // Defined variable to allow for 'title' and 'user_id' to be overriden
     protected $fillable = ['title', 'user_id'];
 
     // Function creates a session from QuizSession model
@@ -40,11 +40,5 @@ class Quiz extends Model
     public function questions()
     {
         return $this->hasMany(Question::class, 'quiz_id');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    
+    }    
 }

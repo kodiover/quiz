@@ -1,8 +1,25 @@
-/* Thin Scrollbar */
+/* Large Scrollbar */
 :root{
-  scrollbar-color: gray #151718 !important;
+  scrollbar-color: rgb(78, 77, 77) #151718 !important;
   scrollbar-width: large !important;
 }
+
+/* For Chrome */
+::-webkit-scrollbar {
+  width: 15px;
+  background:#151718;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #151718; 
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  background:rgb(78, 77, 77);
+} 
 
 /* 
 Navbar Styles
@@ -159,8 +176,17 @@ Design Style
   height: max-content;
 }
 
+.w-h-max {
+  width: 100%;
+  height: 100vh;
+}
+
 .pb-5 {
   padding-bottom: 1px;
+}
+
+.p-0 {
+  padding: 0 !important;
 }
 
 .shadow {
@@ -175,17 +201,26 @@ Design Style
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.center-page {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+}
+
 /* 
 Custom Bootstrap
 ================
 */
 
 .bg-black {
-  background-color: #181a1b;
+  background-color: #181a1b !important;
 }
 
 .bg-blue {
-	background-color: #2563eb;
+	background-color: #0d3ba1;
 }
 
 .border-gray-500 {
@@ -199,7 +234,7 @@ Custom Bootstrap
 }
 
 .border-l {
-  border-bottom-width: 1px;
+  border-left-width: 1px;
   border-color: #918e8e;
 }
 
@@ -296,6 +331,18 @@ Custom Bootstrap
   background-color: rgb(43, 89, 220);
 }
 
+.bg-blue-800 {
+  background-color: rgb(16, 52, 78);
+}
+
+.bg-blue-900 {
+  background-color: #16163c;
+}
+
 .active\:bg-blue-700:active {
   background-color: rgb(6, 35, 114) !important;
+}
+
+.pl-5 {
+  padding-left: 5px;
 }

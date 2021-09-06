@@ -8,7 +8,7 @@
                 if(timeLeft == 0) {     
                     clearInterval(timer);
                     reload = true;
-                    $dispatch('timeup');
+                    $dispatch('timeup');    
                 }
                 if(reload){
                     window.location.reload();
