@@ -11,17 +11,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #151718; 
+  -webkit-box-shadow: inset 0 0 6px #151718;
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
   background:rgb(78, 77, 77);
-} 
+}
 
-/* 
+/*
 Navbar Styles
 =============
 */
@@ -53,7 +53,7 @@ header {
   background-color: #181a1b;
 }
 
-/* 
+/*
 Design Style
 ============
 */
@@ -85,7 +85,7 @@ Design Style
   border-radius: 4px;
   box-sizing: border-box;
   caret-color: white;
-  padding: 5px;   
+  padding: 5px;
   background-color: rgb(24, 26, 27);
 }
 
@@ -121,11 +121,11 @@ Design Style
   background-color: #181a1b;
   margin-left: 20px;
   margin-right: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 0.5rem;
   text-align: center;
-} 
+}
 
 .btn-submit {
   align-items: center !important;
@@ -202,15 +202,81 @@ Design Style
 }
 
 .center-page {
-	height: 100%;
-	width: 100%;
 	display: flex;
 	position: fixed;
 	align-items: center;
 	justify-content: center;
 }
 
-/* 
+.menu {
+    margin-left: 170px;
+    margin-top: 16px;
+}
+
+.center-btn {
+	width: max-content;
+	display: grid;
+	align-self: end;
+}
+
+.quiz-text {
+	display: flex;
+	position: absolute;
+	top: 30%;
+	align-self: center;
+}
+
+/*
+Responsive Media Queries
+========================
+*/
+
+@media only screen and (max-width: 480px) {
+    .form-center {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .auth-view {
+        padding-top: 175px;
+    }
+
+    .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .sm\:rounded-lg {
+		border-radius: 0.5rem;
+	}
+
+    .quiz-box {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .box-mod {
+        min-width: 16rem;
+    }
+
+    .btn-submit {
+        align-items: center !important;
+        min-width: 16rem !important;
+    }
+
+    .px-3 {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .menu {
+        margin-top: 16px;
+    }
+}
+
+/*
 Custom Bootstrap
 ================
 */
@@ -224,12 +290,10 @@ Custom Bootstrap
 }
 
 .border-gray-500 {
-	--darkreader-border--tw-border-opacity: 1;
 	border-color: #828589;
 }
 
 .border-gray-300 {
-	--darkreader-border--tw-border-opacity: 1;
 	border-color: #2f3235 !important;
 }
 
@@ -265,7 +329,7 @@ Custom Bootstrap
 }
 
 .hover\:text-blue-600:hover {
-  color: #2563eb;
+  color: #2563eb !important;
 }
 
 .hover\:text-gray-600:hover {

@@ -17,19 +17,20 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>  
-        <!-- <script src="https://js.pusher.com/7.0/pusher-with-encryption.min.js"></script> -->
-
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
 
         <div class="min-h-screen">
 
-        @unless(request()->route()->getName() == 'quiz.enter' || request()->route()->getName() == 'quiz.play' || request()->route()->getName() == 'user.quiz.start' || request()->route()->getName() == 'user.quiz.play' || request()->route()->getName() == 'user.quiz.leaderboard')
+        @unless(request()->route()->getName() == 'quiz.enter' ||
+            request()->route()->getName() == 'quiz.play' ||
+            request()->route()->getName() == 'user.quiz.start' ||
+            request()->route()->getName() == 'user.quiz.play' ||
+            request()->route()->getName() == 'user.quiz.leaderboard')
             @include('navigation-menu')
         @endunless
-
 
             <!-- Page Heading -->
             @if (isset($header))

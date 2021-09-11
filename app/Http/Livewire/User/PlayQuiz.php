@@ -86,12 +86,10 @@ class PlayQuiz extends Component
     public function mount(QuizSession $quizSession)
     {
         $this->session = $quizSession->load(['quiz.questions', 'players']);
-        
-        DB::table('quiz_sessions')->where('id', $this->session->id)->update(['start_quiz' => false]);
+
 
         if ($quizSession->current_question_index === null || $quizSession->ended_at) {
             $this->question = $quizSession->quiz->questions->last();
-            $this->session->endSession();
             return redirect(route('user.quiz.leaderboard', $quizSession));
         }
 

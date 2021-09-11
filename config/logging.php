@@ -38,6 +38,7 @@ return [
         'stack' => [
             'driver' => 'stack',
             'channels' => ['slack'],
+            'level' => env('LOG_LEVEL', 'error'),
             'ignore_exceptions' => false,
         ],
 

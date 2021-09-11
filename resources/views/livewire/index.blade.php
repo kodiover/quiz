@@ -1,5 +1,5 @@
 <div class="h-screen flex flex-col justify-center items-center index-page">
-    <img class="image" src="{{ asset('images/index-page.jpeg') }}">
+    <img class="image" src="{{ asset('images/index-page.jpg') }}">
     @if($enteredSession)
         <?php
             echo '<style type="text/css">
@@ -16,7 +16,7 @@
             <form wire.transition.fade wire:submit.prevent="ready" class="text-center form-center">
                 <div class="text-xl text-white container2">
                     <x-jet-input id="pin" class="box-mod"
-                            type="tel"
+                            type="text"
                             placeholder="Nickname"
                             autocomplete="off"
                             autofocus
