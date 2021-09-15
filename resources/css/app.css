@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'reboot.css';
+@import 'custom-properties.css';
+@import 'components.css';
+@import 'utilities.css';
+
+.animate {
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+.animation-rotate {
+    animation-name: rotate;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
