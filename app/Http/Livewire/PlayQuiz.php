@@ -46,9 +46,10 @@ class PlayQuiz extends Component
 
     public function end()
     {
+        PlayerSession::clear();
         $this->redirect(route('index'));
     }
-    
+
     public function storeAnswer($answerKey)
     {
         $this->response = $this->player->respond($this->question, $answerKey);
@@ -94,8 +95,6 @@ class PlayQuiz extends Component
 
         $this->session = $quizSession->load(['quiz']);
 
-        $this->checkQuizStart(0);
-
         if ($this->session->next_question) {
             $this->nextQuestion = 1;
         } else {
@@ -108,21 +107,19 @@ class PlayQuiz extends Component
 
         $this->question = $this->session->quiz->questions
             ->get($this->session->current_question_index, null);
-        
+
         if (isset($this->question)) {
             $this->response = $this->player->responses()
                 ->where('question_id', $this->question->id)
                 ->first();
         } else {
             $this->ended = true;
-            $this->session->endSession();
-            PlayerSession::clear();
         }
 
         if ($this->timeLimitElapsed() && $this->response === null) {
             $this->noResponse = true;
         }
-        
+
         $this->checkForAnswers();
 
         if ($this->response && $this->response->score !== null) {

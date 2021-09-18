@@ -12,7 +12,7 @@ class QuizLeaderboard extends Component
     protected $sessionId;
 
     public function render()
-    {        
+    {
         return view('livewire.user.quiz-leaderboard', [
             'players' => QuizPlayer::whereQuizSessionId($this->sessionId)
                 ->orderBy('score', 'desc')
@@ -23,16 +23,14 @@ class QuizLeaderboard extends Component
 
     public function end()
     {
-        QuizPlayer::with('sessions')->whereQuizSessionId($this->sessionId)->delete();
-
+        $this->session->endSession();
         return redirect(route('home'));
     }
- 
+
     public function mount($quizSession)
     {
-        $this->session = QuizSession::where('id', $quizSession);
-        
         $this->sessionId = $quizSession;
 
+        $this->session = QuizSession::where('id', $quizSession);
     }
 }
