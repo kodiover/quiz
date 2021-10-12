@@ -12,7 +12,6 @@ class Quiz extends Component
     use AuthorizesRequests;
 
     public $session;
-    public $startQuiz = 50;
 
     public function getListeners()
     {
