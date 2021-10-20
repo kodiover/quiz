@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $casts = [
+    // Variable to convert the options column to an array
+    protected $casts = [ 
         'options' => 'array'
     ];
 
-    protected $guarded = [];
+    // Variable to define attributes that aren't mass assignable
+    protected $guarded = []; 
 
-    public static function boot()
+    // Function to throw an error if the correct key is not linking to an option
+    public static function boot() 
     {
         parent::boot();
 
@@ -23,19 +26,22 @@ class Question extends Model
             }
         });
     }
+    
+    // Function that defines a child for the Quiz class
     public function quiz()
     {
         return $this->belongsTo(Quiz::class);
     }
 
+    // Function that links Question with QuestionResponse class
     public function responses()
     {
         return $this->hasMany(QuestionResponse::class, 'question_id');
     }
 
+    // Function which returns true if the variable passed is equal to the correct key
     public function isCorrect($key)
     {
         return $this->correct_key === $key;
-
     }
 }

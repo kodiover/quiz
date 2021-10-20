@@ -18,7 +18,6 @@ class Index extends Component
     {
         return view('livewire.index');
     }
-
     public function enter()
     {
         $this->validate([
@@ -29,7 +28,6 @@ class Index extends Component
 
         PlayerSession::id($this->enteredSession->id);
     }
-
     public function ready()
     {
         $this->validate([
@@ -39,15 +37,12 @@ class Index extends Component
                     ->where('quiz_session_id', $this->enteredSession->id)
             ]
         ]);
-
-        // $this->enteredSession = QuizSession::with('quiz')->where('nickname', $this->nickname)->first();
-
         $player = $this->enteredSession->joinAs($this->nickname);
 
         event(new PlayerJoined($player, $this->enteredSession));
+
         return redirect(route('quiz.enter', $this->enteredSession));
     }
-
     public function mount()
     {
         if (PlayerSession::id()) {

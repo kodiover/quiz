@@ -33,8 +33,6 @@ class Quiz extends Component
 
         event(new QuizSessionStarted($this->session));
         
-        // DB::table('quiz_sessions')->where('id', $this->session->id)->update(['start_quiz' => true]);
-
         return redirect()->route('user.quiz.play', $this->session);
         
     }

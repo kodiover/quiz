@@ -95,12 +95,6 @@ class PlayQuiz extends Component
 
         $this->session = $quizSession->load(['quiz']);
 
-        if ($this->session->next_question) {
-            $this->nextQuestion = 1;
-        } else {
-            $this->nextQuestion = 30;
-        }
-
         $this->player = $quizSession->players()->whereNickname(
             PlayerSession::nickname()
         )->firstOrFail();

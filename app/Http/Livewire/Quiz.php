@@ -12,7 +12,6 @@ class Quiz extends Component
     use AuthorizesRequests;
 
     public $session;
-    public $startQuiz = 50;
 
     public function getListeners()
     {
@@ -36,12 +35,6 @@ class Quiz extends Component
         $this->authorize('view', $quizSession);
 
         $this->session = $quizSession->load(['quiz']);
-
-        if ($this->session->start_quiz) {
-            $this->startQuiz = 1;
-        } else {
-            $this->startQuiz = 50;
-        }
 
         if ($this->session->isActive()){
             $this->redirect(route('quiz.play', $this->session));

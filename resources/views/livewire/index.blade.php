@@ -32,9 +32,9 @@
             <p class="px-4 mt-1 text-sm inherit error bottom-25">{{ $message }}</p>
         @enderror
     @else
-        <div class="max-w-lg mx-auto container ">
+        <div class="max-w-lg mx-auto container">
             <h2 for="pin" class="text-4xl font-bold text-center text-white py-2 mb-5">Enter Quiz Pin</h2>
-            <form wire:transition.fade wire:submit.prevent="enter" wire:key="enter-quiz"  class="text-center form-center mb-15">
+            <form wire:transition.fade wire:submit.prevent="enter" class="text-center form-center mb-15">
                 <div class="text-xl text-black container2">
                     <x-jet-input id="pin" class="box-mod"
                             type="tel"

@@ -55,7 +55,6 @@ class QuizSession extends Model
     {
         return $this->update([
             'started_at' => now(),
-            'start_quiz' => true,
             'next_question_at' => now()->addSeconds($this->quiz->questions->first()->time_limit + $delayInSeconds),
             'pin' => null,
             'current_question_index' => 0,
