@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\PlayerSession;
 use App\Models\QuizSession;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
@@ -28,6 +27,7 @@ class Quiz extends Component
     public function redirectToPlay()
     {
         $this->redirect(route('quiz.play', $this->session));
+        
     }
 
     public function mount(QuizSession $quizSession)
@@ -36,8 +36,6 @@ class Quiz extends Component
 
         $this->session = $quizSession->load(['quiz']);
 
-        if ($this->session->isActive()){
-            $this->redirect(route('quiz.play', $this->session));
-        }
+        $this->authorize('redirect', $this->redirectToPlay(), $quizSession);
     }
 }

@@ -20,7 +20,8 @@ class CreateQuestionsTable extends Migration
             $table->unsignedTinyInteger('time_limit'); // Set to positive only
             $table->json('options'); // Method for adding extra data to a column
             $table->string('correct_key', 5); // Method sets min value of 5
-
+            $table->timestamps();
+            
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
         });
     }

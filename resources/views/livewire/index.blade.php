@@ -15,7 +15,7 @@
             <h2 class="text-4xl font-bold text-center text-white py-2">Enter Nickname</h2>
             <form wire.transition.fade wire:submit.prevent="ready" class="text-center form-center">
                 <div class="text-xl text-white container2">
-                    <x-jet-input id="pin" class="box-mod"
+                    <x-jet-input id="nickname" class="box-mod"
                             type="text"
                             placeholder="Nickname"
                             autocomplete="off"

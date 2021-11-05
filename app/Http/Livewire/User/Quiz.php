@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\User;
 
 use App\Events\QuizSessionStarted;
-use Illuminate\Support\Facades\DB;
 use App\Models\QuizSession;
 use Livewire\Component;
 

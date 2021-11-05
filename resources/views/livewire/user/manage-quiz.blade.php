@@ -1,10 +1,9 @@
-
 <div class="max-w-screen-md px-4 mx-auto relative">
     <h2 class="text-3xl text-center pt-5 text-white text-title italic">{{ $quiz->title }}</h2>
     <p class="flex items-center text-white justify-center font-bold mb-8">
         <span class="flex-1 text-right">{{ $quiz->questions->count() }} Questions</span> <!-- Counts the no. of Qs via ->count() -->
         <span class="mx-4">|</span>
-        <span class="flex-1">{{ $quiz->questions->sum('time_limit') }} seconds</span>
+        <span class="flex-1">{{ $quiz->questions->sum('time_limit') }} seconds</span> <!-- Counts the no. of s via ->sum() -->
     </p>
 
     {{-- Old Sessions --}}
@@ -87,13 +86,13 @@
         {{-- Add New Question Modal --}}
         <div wire:ignore.self
             x-show.fade="creating"
-            @keydown.window.escape="creating = false"
             class="fixed z-50 inset-0 flex items-center justify-center p-8"
             style="background-color: rgba(0, 0, 0, 0.5)">
             <div @click.away="creating = false"
                 class="max-w-screen-md max-h-full overflow-y-auto w-full bg-black text-white p-6 rounded shadow">
-                @include('livewire.user._add-question', ['quiz' => $quiz])
+                @include('livewire.user._add-question')
             </div>
         </div>
     </div>
 </div>
+

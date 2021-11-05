@@ -8,11 +8,17 @@ use Livewire\Component;
 class ManageQuiz extends Component
 {
     public $quiz;
-
     public $text = '';
     public $timeLimit = 15;
-    public $options = [];
+    public $options = [ '', '' ];
     public $correctOptionIndex = 0;
+
+    // Custom validation message
+    public $messages = [
+        'options.*.required' => 'This cannot be cannot be empty.',
+        'options.*.min' => 'This must be at least 2 characters.',
+        'options.*.max' => 'This must not be greater than 50 characters.'
+    ];
 
     // Acts as constructor, to bind Quiz model
     public function mount($quiz)
@@ -20,10 +26,9 @@ class ManageQuiz extends Component
         $this->quiz = Quiz::whereId($quiz)
             ->with(['sessions.players', 'questions']) // Must bind components that need to be accessed
             ->firstOrFail();
-
-        $this->resetQuestion();
     }
 
+    // Function to reset input question has been submitted 
     public function resetQuestion()
     {
         $this->text = '';
@@ -32,6 +37,7 @@ class ManageQuiz extends Component
         $this->correctOptionIndex = 0;
     }
 
+    // Function to return a char based on specified index
     public function keys($index)
     {
         return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'][$index];
@@ -43,6 +49,7 @@ class ManageQuiz extends Component
         return view('livewire.user.manage-quiz');
     }
 
+    // Function to add an item to the options array
     public function addOption()
     {
         if (count($this->options) < 6) {
@@ -50,31 +57,25 @@ class ManageQuiz extends Component
         }            
     }
 
-    public function removeOption($index = null)
+    // Function to remove an item from the options array
+    public function removeOption()
     {
-        if (count($this->options) < 2) {
+        if (count($this->options) < 3) { // Must be greater than 2
             return;
         }
+            
+        $index = count($this->options) - 1; // Must remove from the last item
 
-        if ($index === null) {
-            $index = count($this->options) - 1;
-        }
-
-        array_splice($this->options, $index, 1);
-
-        if ($index === (int) $this->correctOptionIndex && $index >= count($this->options)) {
-            $this->correctOptionIndex = count($this->options) - 1;
-        }
+        array_splice($this->options, $index, 1); // Remove 1 item
     }
 
+    // Function to create a question
     public function create()
     {
         $this->validate([
             'text' => ['required', 'string', 'min:4', 'max:190'],
             'timeLimit' => ['required', 'numeric', 'min:7'],
-            'options' => ['required', 'array', 'min:2', 'max:6'],
-            'options.*' => ['required', 'string', 'min:2', 'max:50'],
-            'correctOptionIndex' => ['required', 'numeric', 'gte:0', 'lt:'.count($this->options)],
+            'options.*' => ['min:2', 'max:50'],
         ]);
 
         $question = $this->quiz->questions()->create([
@@ -91,6 +92,7 @@ class ManageQuiz extends Component
         $this->emit('closeModal');
     }
 
+    // Function used to convert the index of an array to a key a, b, c etc.
     public function makeKeyedOptions($options)
     {
         $keys = array_map(function ($index) {

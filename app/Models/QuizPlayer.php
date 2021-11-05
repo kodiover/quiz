@@ -21,13 +21,14 @@ class QuizPlayer extends Model
         return $this->belongsTo(QuizSession::class, 'quiz_session_id');
     }
 
+    // Defines functionality of when client answers a question
     public function respond($question, $key)
     {
         if (
             ! $question->is($this->session->currentQuestion())
             || $this->session->hasTimedOut()
         ) {
-            return false;
+            return;
         }
 
         return $this->responses()->firstOrCreate(

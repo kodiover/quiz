@@ -2,9 +2,7 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -37,7 +35,12 @@ class AnswerReceived implements ShouldBroadcast
     {
         return new PrivateChannel("User.Quiz.{$this->session->id}");
     }
-
+    
+    /**
+     * Return an array from the variable passed
+     *
+     * @return array
+     */
     public function broadcastWith()
     {
         return [
@@ -45,3 +48,4 @@ class AnswerReceived implements ShouldBroadcast
         ];
     }
 }
+

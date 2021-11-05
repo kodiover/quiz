@@ -195,8 +195,8 @@
         }
       </style>
         </div>
-        <div style="color: rgb(177, 170, 160);font-size: 14px;font-family: Arial;padding-top:10px;">These terms of use were created using <a href="https://termly.io/products/terms-and-conditions-generator/?ftseo" target="_blank" data-custom-class="link" >Termly’s Terms and Conditions Generator</a>.</div>
-        <div style="color: rgb(177, 170, 160); text-align: center;">Coded with <span class="heartlove">❤</span>  from <a class="text-gray-900 hover:text-blue-600" href="https://www.ackerworx.net" data-wahfont="14">Ackerworx</a> an Altruistic Group <br><div style="margin-top: 1rem;"> © 2021 Quiz</div></div>
+
+        <div style="color: rgb(177, 170, 160); text-align: center;">Coded with <span class="heartlove">❤</span>  from <a class="text-gray-900 hover:text-blue-600" href="https://www.ackerworx.net" data-wahfont="14" target="_blank" data-custom-class="link">Ackerworx</a> an Altruistic Group <br><div style="margin-top: 1rem;"> © 2021 Quiz</div></div>
               </div>
           </div>
       </div>

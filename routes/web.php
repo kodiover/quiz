@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function() {
             $question = $quizSession->nextQuestion($delayInSeconds = 1);
 
             if (! $question) {
-                return redirect()->route('user.quiz.leaderboard', $quizSession);
+                return redirect(route('user.quiz.leaderboard', $quizSession));
             }
 
             return redirect(route('user.quiz.play', $quizSession));

@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     // Variable to convert the options column to an array
-    protected $casts = [ 
+    protected $casts = [
         'options' => 'array'
     ];
 
     // Variable to define attributes that aren't mass assignable
-    protected $guarded = []; 
+    protected $guarded = [];
 
     // Function to throw an error if the correct key is not linking to an option
-    public static function boot() 
+    public static function boot()
     {
         parent::boot();
 
@@ -26,7 +26,6 @@ class Question extends Model
             }
         });
     }
-    
     // Function that defines a child for the Quiz class
     public function quiz()
     {

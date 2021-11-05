@@ -6,8 +6,8 @@
                 <p class="font-bold text-3xl italic">{{ $player->score }}</p>
             </div>
             <h2 class="text-5xl font-bold text-gray-900 italic">The End!</h2>
-            <x-jet-button wire:click="end"
-                class="absolute text-2xl text-bottom center-btn">Home</x-jet-button>
+            <x-jet-button wire:click="endQuiz"
+                class="absolute text-2xl text-bottom top-9">Home</x-jet-button>
         </div>
     @elseif(! $response && $noResponse)
         <div class="w-h-max center-page bg-blue-400">
@@ -30,7 +30,6 @@
             @endif
         </div>
     @elseif(! $response)
-
         <div class="none">
             @component('components.countdown', [
                 'duration' => $timeLeft,
@@ -58,7 +57,6 @@
             </div>
         </div>
     @else
-
         <div class="w-h-max center-page bg-blue-400">
             <div class="none">
                 @component('components.countdown', [
@@ -67,23 +65,16 @@
                 ])
                 @endcomponent
             </div>
-        <div class="grid">
-            <div class="text-5xl font-bold justify-self mb-4 p-4">
-                @include('partials.spinner', ['classes' => 'w-16 h-16'])
+            <div class="grid">
+                <div class="text-5xl font-bold justify-self mb-4 p-4">
+                    @include('partials.spinner', ['classes' => 'w-16 h-16'])
+                </div>
+                <p class="text-center text-lg font-bold">
+                    Waiting for answer...
+                </p>
             </div>
-            <p class="text-center text-lg font-bold">
-                Waiting for answer...
-            </p>
         </div>
-            </div>
     @endif
-    <div class="none">
-        @component('components.refresh', [
-            'duration' => $nextQuestion,
-            'refresh' => 'refresh()'
-        ])
-        @endcomponent
-    </div>
 </div>
 
 <script>

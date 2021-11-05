@@ -18,7 +18,6 @@ class PlayQuiz extends Component
     public $response;
     public $player;
     public $timeLeft = 0;
-    public $nextQuestion = 30;
     public $showAnswer = false;
     public $noResponse = false;
     public $ended = false;
@@ -41,12 +40,13 @@ class PlayQuiz extends Component
 
     public function reload($data)
     {
-        $this->redirect(route('quiz.play', $this->session));
+        return redirect(route('quiz.play', $this->session));
     }
 
-    public function end()
+    public function endQuiz()
     {
         PlayerSession::clear();
+
         $this->redirect(route('index'));
     }
 

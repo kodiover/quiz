@@ -26,6 +26,8 @@ class Index extends Component
 
         $this->enteredSession = QuizSession::with('quiz')->where('pin', $this->pin)->first();
 
+        
+
         PlayerSession::id($this->enteredSession->id);
     }
     public function ready()

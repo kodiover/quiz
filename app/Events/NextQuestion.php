@@ -36,4 +36,3 @@ class NextQuestion implements ShouldBroadcast
         return new Channel('Quiz.'.$this->session->id);
     }
 }
-/

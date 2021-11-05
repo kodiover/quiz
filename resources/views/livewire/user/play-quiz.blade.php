@@ -1,7 +1,7 @@
 @php($bgColors = ['bg-blue-400 text-white', 'bg-red-500 text-white', 'bg-green-400 text-white', 'bg-yellow-400 text-white'])
 @php($shapes = ['triangle', 'hexagon', 'circle', 'star'])
 <div class="container-w mx-auto flex flex-col min-h-screen relative bg-blue-900">
-    <h2 class="text-2xl font-bold text-center text-white my-8">{{$session->quiz->title}}</h2>
+    <h2 class="text-2xl font-bold text-center text-white my-8">{{ $session->quiz->title }}</h2>
     @if (! $showAnswers)
         <div class="absolute top-0 right-0 text-white mt-4">
             @component('components.countdown', [

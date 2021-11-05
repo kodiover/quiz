@@ -19,7 +19,8 @@ class CreateQuestionResponsesTable extends Migration
             $table->unsignedBigInteger('question_id'); // Set to positive only
             $table->string('response', 5); // Method sets min value of 5
             $table->unsignedInteger('score')->nullable(); // Set to positive only and can be null
-
+            $table->timestamps();
+            
             $table->foreign('player_id')->references('id')->on('quiz_players')->onDelete('cascade');
         });
     }

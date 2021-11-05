@@ -52,12 +52,10 @@
 
     <div wire:key="create-quiz-modal"
         x-show.fade="creating"
-        @keydown.window.escape="creating = false"
         class="fixed z-50 inset-0 flex items-center justify-center p-4"
         style="background-color: rgba(0, 0, 0, 0.5);">
 
-        <div @click.away="creating = false"
-            class="max-w-full bg-black text-gray-900 p-6 rounded shadow">
+        <div @click.away="creating = false" class="max-w-full bg-black text-gray-900 p-6 rounded shadow">
             <h4 class="text-white text-center">Create Quiz</h4>
             <form wire:submit.prevent="createQuiz" class="text-center form-center">
                 <div class="text-xl text-black container2">
@@ -66,7 +64,7 @@
                         placeholder="Title"
                         autocomplete="off"
                         autofocus
-                        wire:model="quizTitle"/>
+                        wire:model.defer="quizTitle"/>
                 </div>
                 <div class="text-xl mt-4 mb-4 px-3">
                     <x-jet-button type="submit" class="btn-submit mb-15 w-full">
@@ -82,3 +80,4 @@
         @enderror
     </div>
 </div>
+

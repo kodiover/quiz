@@ -820,7 +820,7 @@ select {
 	font-weight: 500;
 }
 .prose strong {
-	color: #111827;
+	color: rgb(197, 192, 182) !important;
 	font-weight: 600;
 }
 .prose ol[type="A"] {
@@ -1057,6 +1057,7 @@ select {
 .prose li {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+    color: rgb(177, 170, 160) !important;
 }
 .prose > ul > li p {
 	margin-top: 0.75em;
