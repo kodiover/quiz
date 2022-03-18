@@ -17,7 +17,7 @@ It's built on the Jetstream API to provide the framework
 
 ## Install:
 ```
-git clone https://github.com/oned0t/quiz.git
+git clone https://github.com/kodiover/quiz.git
 composer install
 php artisan key:generate
 php artisan migrate
