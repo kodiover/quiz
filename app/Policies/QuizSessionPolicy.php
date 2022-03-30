@@ -17,13 +17,6 @@ class QuizSessionPolicy
                 ->contains(PlayerSession::nickname());
     }
 
-    public function redirect($path, QuizSession $quizSession)
-    {
-        if ($quizSession->isActive()) {
-            return redirect(route($path));
-        }
-    }
-
     public function play($user = null, QuizSession $quizSession)
     {
         return $this->view($user, $quizSession)

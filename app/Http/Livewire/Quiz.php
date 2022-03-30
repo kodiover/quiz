@@ -36,6 +36,8 @@ class Quiz extends Component
 
         $this->session = $quizSession->load(['quiz']);
 
-        $this->authorize('redirect', $this->redirectToPlay(), $quizSession);
+        if ($this->session->isActive()){
+            $this->redirect(route('quiz.play', $this->session));
+        }
     }
 }
